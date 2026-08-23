@@ -5,3 +5,6 @@ assets/img/IMG_*.jpeg
 assets/img/想いを可視化のサービス
 assets/img/Gemini_Generated_Image_s727m1s727m1s727.jfif
 assets/img/グランハマー.webp
+
+# local preview only (not part of the published site)
+server.ps1

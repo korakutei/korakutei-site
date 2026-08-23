@@ -50,29 +50,43 @@
   var primaryNav = document.getElementById('primaryNav');
   if(!navToggle || !primaryNav) return;
 
+  function isOpen(){ return navToggle.getAttribute('aria-expanded') === 'true'; }
+
   function closeNav(returnFocus){
     navToggle.setAttribute('aria-expanded','false');
     navToggle.setAttribute('aria-label','メニューを開く');
     primaryNav.classList.remove('open');
+    document.body.classList.remove('nav-open');
     if(returnFocus) navToggle.focus();
   }
   function openNav(){
     navToggle.setAttribute('aria-expanded','true');
     navToggle.setAttribute('aria-label','メニューを閉じる');
     primaryNav.classList.add('open');
+    document.body.classList.add('nav-open');
     var firstLink = primaryNav.querySelector('a');
     if(firstLink) firstLink.focus();
   }
 
   navToggle.addEventListener('click', function(){
-    var expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    if(expanded){ closeNav(false); } else { openNav(); }
+    if(isOpen()){ closeNav(false); } else { openNav(); }
   });
   primaryNav.addEventListener('click', function(e){
     if(e.target === primaryNav || e.target.tagName === 'A'){ closeNav(false); }
   });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true'){ closeNav(true); }
+    if(!isOpen()) return;
+    if(e.key === 'Escape'){ closeNav(true); return; }
+    if(e.key !== 'Tab') return;
+    // メニュー展開中はフォーカスをメニュー内（＋閉じるボタン）に閉じ込める
+    var items = [navToggle].concat(Array.prototype.slice.call(primaryNav.querySelectorAll('a')));
+    var first = items[0], last = items[items.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+  // メニュー展開中に画面幅がデスクトップに戻った場合、ロックを解除する
+  window.addEventListener('resize', function(){
+    if(isOpen() && window.innerWidth > 760) closeNav(false);
   });
 })();
 
