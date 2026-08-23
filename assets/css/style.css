@@ -1,0 +1,701 @@
+:root{
+    --bg:#F6F1E6;
+    --bg-deep:#EFE7D6;
+    --ink:#1B2A41;
+    --ink-soft:#3d4c63;
+    --vermillion:#BE3B26;
+    --vermillion-deep:#9c2f1e;
+    --moss:#4B5C43;
+    --gold:#A6813C;
+    --gold-text:#836428;
+    --paper-line:rgba(27,42,65,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--bg);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%231B2A41' stroke-opacity='0.045' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='32'/%3E%3Ccircle cx='64' cy='0' r='32'/%3E%3Ccircle cx='0' cy='64' r='32'/%3E%3Ccircle cx='64' cy='64' r='32'/%3E%3Ccircle cx='32' cy='32' r='32'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:64px 64px;
+    color:var(--ink);
+    font-family:"Noto Sans JP",sans-serif;
+    line-height:1.9;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--vermillion);color:#fff;}
+  h1,h2,h3,.mincho{font-family:"Shippori Mincho","Noto Serif JP",serif;}
+  .eyebrow{
+    font-family:"Noto Sans JP",sans-serif;
+    letter-spacing:.32em;
+    font-size:11px;
+    font-weight:600;
+    color:var(--vermillion);
+    text-transform:uppercase;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- stamp signature element ---------- */
+  .stamp{
+    position:relative;
+    width:1em;height:1em;
+    display:inline-block;
+  }
+  .stamp svg{width:100%;height:100%;overflow:visible;}
+
+  .en-count{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:"Shippori Mincho",serif;
+    color:var(--vermillion);
+    font-weight:700;
+  }
+  .en-count .stamp-mark{
+    width:34px;height:34px;
+    flex:0 0 auto;
+  }
+
+  /* ---------- layout helpers ---------- */
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  section{position:relative;}
+  .reveal{opacity:1;transform:none;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:18px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    mix-blend-mode:normal;
+  }
+  .brandmark{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;font-size:16px;letter-spacing:.08em;
+    display:flex;align-items:center;gap:10px;
+    color:var(--ink);
+  }
+  .brandmark img{
+    width:32px;height:32px;border-radius:50%;object-fit:cover;
+    border:1px solid var(--paper-line);
+  }
+  nav{display:flex;gap:28px;font-size:13px;letter-spacing:.08em;}
+  nav a{text-decoration:none;opacity:.75;transition:opacity .2s;white-space:nowrap;}
+  nav a:hover{opacity:1;}
+  .nav-toggle{
+    display:none;
+    flex-direction:column;justify-content:center;align-items:center;gap:5px;
+    width:44px;height:44px;
+    border:0;background:transparent;cursor:pointer;padding:0;flex:0 0 auto;
+  }
+  .nav-toggle-bar{ width:22px;height:2px;background:var(--ink);transition:transform .3s ease, opacity .3s ease; }
+  header.on-dark .nav-toggle-bar{ background:#f3ede0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){ opacity:0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  @media (max-width:760px){
+    .nav-toggle{ display:flex; }
+    nav{
+      display:flex;position:fixed;inset:0;z-index:60;
+      flex-direction:column;align-items:center;justify-content:center;gap:8px;
+      background:var(--bg);font-size:17px;letter-spacing:.05em;
+      transform:translateY(-8px);
+      opacity:0;visibility:hidden;pointer-events:none;
+      transition:opacity .3s ease, transform .3s ease, visibility 0s linear .3s;
+    }
+    nav.open{
+      opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+      transition:opacity .3s ease, transform .3s ease, visibility 0s linear 0s;
+    }
+    nav a{ padding:14px 20px;color:var(--ink); }
+    header.on-dark nav.open a{ color:var(--ink); }
+    nav a.nav-contact{
+      margin-top:10px;border:1px solid var(--vermillion);color:var(--vermillion);border-radius:999px;padding:12px 30px;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    padding:140px 24px 80px;
+    background:
+      radial-gradient(ellipse at 50% -10%, #fbf6ea 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%231B2A41' stroke-opacity='0.045' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='32'/%3E%3Ccircle cx='64' cy='0' r='32'/%3E%3Ccircle cx='0' cy='64' r='32'/%3E%3Ccircle cx='64' cy='64' r='32'/%3E%3Ccircle cx='32' cy='32' r='32'/%3E%3C/g%3E%3C/svg%3E"),
+      var(--bg);
+    background-size:auto,64px 64px,auto;
+    overflow:hidden;
+  }
+  .hero-logo{
+    width:min(240px,46vw);height:min(240px,46vw);
+    margin-bottom:8px;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 18px 60px -18px rgba(27,42,65,.35);
+    border:1px solid rgba(27,42,65,.15);
+  }
+  .hero-logo img{width:100%;height:100%;object-fit:cover;}
+  .hero .tagline{
+    margin-top:38px;
+    font-size:clamp(18px,2.6vw,26px);
+    font-weight:600;
+    color:var(--ink);
+  }
+  .hero .subline{
+    margin-top:10px;
+    font-size:14px;
+    color:var(--ink-soft);
+    letter-spacing:.05em;
+  }
+  .scroll-cue{
+    margin-top:64px;
+    font-size:11px;letter-spacing:.3em;color:var(--ink-soft);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .scroll-cue .line{width:1px;height:40px;background:linear-gradient(var(--ink-soft),transparent);animation:drop 2s ease-in-out infinite;}
+  @keyframes drop{0%{opacity:0;transform:scaleY(0.3);transform-origin:top;}50%{opacity:1;transform:scaleY(1);}100%{opacity:0;transform:scaleY(0.3);transform-origin:bottom;}}
+
+  /* ---------- section shell ---------- */
+  .sec{padding:120px 0;}
+  .sec-head{margin-bottom:56px;}
+  .sec-head h2{font-size:clamp(28px,4vw,44px);font-weight:700;margin:12px 0 0;color:var(--ink);}
+  .sec-head p.lead{max-width:640px;margin-top:18px;color:var(--ink-soft);font-size:15px;}
+  .sec-head h2::after{
+    content:"";
+    display:block;
+    width:128px;height:18px;margin-top:20px;
+    background-repeat:no-repeat;background-position:left center;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='18'%3E%3Cline x1='4' y1='9' x2='114' y2='9' stroke='%23BE3B26' stroke-opacity='0.55' stroke-width='1'/%3E%3Ccircle cx='10' cy='9' r='3.6' fill='%23BE3B26'/%3E%3Ccircle cx='26' cy='9' r='3.6' fill='%23BE3B26'/%3E%3Ccircle cx='42' cy='9' r='3.6' fill='%23BE3B26'/%3E%3Ccircle cx='58' cy='9' r='3.6' fill='%23BE3B26'/%3E%3Ccircle cx='74' cy='9' r='3.6' fill='%23BE3B26'/%3E%3Ccircle cx='90' cy='9' r='3.6' fill='%23BE3B26'/%3E%3Ccircle cx='107' cy='9' r='6' fill='%23BE3B26'/%3E%3C/svg%3E");
+    transform-origin:left center;
+  }
+  .vmv .sec-head h2::after{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='18'%3E%3Cline x1='4' y1='9' x2='114' y2='9' stroke='%23A6813C' stroke-opacity='0.55' stroke-width='1'/%3E%3Ccircle cx='10' cy='9' r='3.6' fill='%23A6813C'/%3E%3Ccircle cx='26' cy='9' r='3.6' fill='%23A6813C'/%3E%3Ccircle cx='42' cy='9' r='3.6' fill='%23A6813C'/%3E%3Ccircle cx='58' cy='9' r='3.6' fill='%23A6813C'/%3E%3Ccircle cx='74' cy='9' r='3.6' fill='%23A6813C'/%3E%3Ccircle cx='90' cy='9' r='3.6' fill='%23A6813C'/%3E%3Ccircle cx='107' cy='9' r='6' fill='%23A6813C'/%3E%3C/svg%3E");
+  }
+  .rule{height:1px;background:var(--paper-line);width:100%;margin:0 0 56px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-body{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;}
+  @media (max-width:860px){.about-body{grid-template-columns:1fr;}}
+  .about-body .lede::first-letter{
+    font-family:"Shippori Mincho",serif;
+    font-size:64px;font-weight:800;color:var(--vermillion);
+    float:left;line-height:.8;margin:6px 12px 0 0;
+  }
+  .about-body p{font-size:15.5px;color:var(--ink-soft);margin:0 0 22px;}
+  .about-quote{
+    border-left:3px solid var(--vermillion);
+    padding-left:26px;
+    font-family:"Shippori Mincho",serif;
+    font-size:19px;color:var(--ink);
+    align-self:start;
+  }
+  .about-quote .who{
+    display:block;margin-top:18px;font-family:"Noto Sans JP",sans-serif;
+    font-size:12px;letter-spacing:.1em;color:var(--ink-soft);
+  }
+  .about-photo{margin-bottom:32px;}
+  .about-photo img{width:100%;height:auto;border-radius:2px;border:1px solid var(--paper-line);}
+  .about-photo .cap{margin-top:10px;font-size:11.5px;color:var(--ink-soft);letter-spacing:.05em;}
+
+  /* ---------- VMV ---------- */
+  .vmv{
+    background-color:var(--ink);color:#f3ede0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='36'%3E%3Cg fill='none' stroke='%23A6813C' stroke-opacity='0.14' stroke-width='1'%3E%3Cpath d='M0 36a36 36 0 0 1 36-36 36 36 0 0 1 36 36'/%3E%3Cpath d='M-36 36a36 36 0 0 1 36-36'/%3E%3Cpath d='M36 36a36 36 0 0 1 36-36'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:72px 36px;
+  }
+  .vmv .sec-head h2{color:#f3ede0;}
+  .vmv .eyebrow{color:#e8a390;}
+  .vmv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);}
+  @media (max-width:860px){.vmv-grid{grid-template-columns:1fr;}}
+  .vmv-card{background:var(--ink);padding:40px 32px;}
+  .vmv-card .k{font-family:"Shippori Mincho",serif;font-size:12px;letter-spacing:.3em;color:#e8a390;}
+  .vmv-card .v{font-family:"Shippori Mincho",serif;font-size:22px;margin-top:14px;font-weight:600;line-height:1.6;}
+  .vmv-values{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px;}
+  .vmv-values span{
+    border:1px solid rgba(255,255,255,.3);
+    padding:8px 16px;border-radius:999px;font-size:12.5px;letter-spacing:.03em;
+    color:#f3ede0;
+  }
+
+  /* ---------- 縁的資本 (循環プロセス) ---------- */
+  .capital-layout{
+    display:grid;grid-template-columns:1fr;gap:48px;align-items:start;
+  }
+  @media (min-width:1080px){
+    .capital-layout{ grid-template-columns:220px 1fr 220px; gap:32px; }
+  }
+  .capital-side{ padding-top:8px; }
+  .capital-side-title{
+    font-family:"Shippori Mincho",serif;font-size:17px;font-weight:700;color:var(--ink);
+    margin:0 0 14px;
+  }
+  .capital-side-text{ font-size:13px;color:var(--ink-soft);line-height:1.9;margin:0; }
+  .capital-value-title{
+    font-size:11.5px;letter-spacing:.15em;color:var(--moss);margin:32px 0 14px;
+  }
+  .capital-value-list{ list-style:none;margin:0;padding:0; }
+  .capital-value-list li{
+    position:relative;padding:0 0 12px 20px;font-size:13px;color:var(--ink-soft);line-height:1.6;
+  }
+  .capital-value-list li::before{
+    content:"";position:absolute;left:0;top:6px;width:9px;height:9px;
+    border:1.5px solid var(--vermillion);border-radius:50%;
+  }
+  .capital-stamp{
+    margin-top:32px;position:relative;width:130px;height:130px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .capital-stamp-ring{ position:absolute;inset:0;width:100%;height:100%; }
+  .capital-stamp-text{
+    position:relative;font-family:"Shippori Mincho",serif;font-size:13px;
+    color:var(--ink);text-align:center;line-height:1.7;letter-spacing:.03em;
+  }
+
+  /* ---- radial diagram (desktop) ---- */
+  .cycle-radial{
+    position:relative;width:100%;max-width:640px;aspect-ratio:1/1;
+    margin:0 auto 8px;display:none;
+  }
+  @media (min-width:861px){ .cycle-radial{ display:block; } }
+  .cycle-radial svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .cycle-radial .arrow-path{
+    fill:none; stroke:var(--ink); stroke-opacity:.75; stroke-width:2; stroke-linecap:round;
+    stroke-dasharray:1; stroke-dashoffset:1;
+    transition:stroke-dashoffset .9s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.js-anim.in-view .cycle-radial .arrow-path{ stroke-dashoffset:0; }
+  .reveal.js-anim.in-view .cycle-radial .arrow-path:nth-of-type(1){ transition-delay:.15s; }
+  .reveal.js-anim.in-view .cycle-radial .arrow-path:nth-of-type(2){ transition-delay:.5s; }
+  .reveal.js-anim.in-view .cycle-radial .arrow-path:nth-of-type(3){ transition-delay:.85s; }
+  .reveal.js-anim.in-view .cycle-radial .arrow-path:nth-of-type(4){ transition-delay:1.2s; }
+  .reveal.js-anim.in-view .cycle-radial .arrow-path:nth-of-type(5){ transition-delay:1.55s; }
+
+  .cycle-radial .cycle-node, .cycle-radial .cycle-center{
+    position:absolute; transform:translate(-50%,-50%) scale(.85); opacity:0;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.js-anim.in-view .cycle-radial .cycle-center{
+    opacity:1; transform:translate(-50%,-50%) scale(1); transition-delay:0s;
+  }
+  .reveal.js-anim.in-view .cycle-radial .cycle-node{
+    opacity:1; transform:translate(-50%,-50%) scale(1);
+  }
+  .reveal.js-anim.in-view .cycle-radial .cycle-node:nth-of-type(2){ transition-delay:.2s; }
+  .reveal.js-anim.in-view .cycle-radial .cycle-node:nth-of-type(3){ transition-delay:.55s; }
+  .reveal.js-anim.in-view .cycle-radial .cycle-node:nth-of-type(4){ transition-delay:.9s; }
+  .reveal.js-anim.in-view .cycle-radial .cycle-node:nth-of-type(5){ transition-delay:1.25s; }
+  .reveal.js-anim.in-view .cycle-radial .cycle-node:nth-of-type(6){ transition-delay:1.6s; }
+
+  .cycle-radial .cycle-node{
+    width:200px;height:200px;border-radius:50%;
+    background:var(--bg);border:1px solid var(--paper-line);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+    text-align:center;padding:26px;
+  }
+  .cycle-radial .cycle-node:hover{ border-color:var(--vermillion); }
+  .cycle-radial .cycle-node .stamp-icon{
+    display:block;width:24px;height:24px;line-height:0;
+  }
+  .cycle-radial .cycle-node .stamp-icon svg{ position:static;display:block;width:100%;height:100%; }
+  .cycle-radial .cycle-node .num{
+    font-family:"Shippori Mincho",serif;font-size:12px;color:var(--vermillion);letter-spacing:.1em;
+  }
+  .cycle-radial .cycle-node .title{ font-size:15px;font-weight:700;color:var(--ink);line-height:1.4; }
+  .cycle-radial .cycle-node .desc{ font-size:11px;color:var(--ink-soft);line-height:1.5; }
+  .cycle-radial .cycle-center{
+    width:210px;height:210px;border-radius:50%;
+    background:var(--ink);color:#f3ede0;border:2px solid var(--gold);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    left:50%;top:50%;padding:20px;
+  }
+  .cycle-radial .cycle-center .k{
+    font-family:"Shippori Mincho",serif;font-size:13px;letter-spacing:.25em;color:#e8a390;
+  }
+  .cycle-radial .cycle-center .v{
+    font-family:"Shippori Mincho",serif;font-size:24px;font-weight:700;margin-top:8px;
+  }
+  .cycle-radial .cycle-center .d{
+    font-size:10.5px;color:#cfc6b3;line-height:1.6;margin-top:10px;
+  }
+
+  /* ---- step list (accessible content; visible stepped layout on mobile) ---- */
+  .cycle-steps{
+    display:flex;flex-wrap:wrap;align-items:stretch;gap:0;
+    justify-content:center;list-style:none;margin:0;padding:0;
+  }
+  .cycle-step{
+    background:var(--bg);
+    border:1px solid var(--paper-line);
+    border-radius:3px;
+    padding:26px 22px;
+    width:220px;
+    position:relative;
+  }
+  .cycle-step .num{
+    font-family:"Shippori Mincho",serif;
+    font-size:12px;color:var(--vermillion);letter-spacing:.15em;
+  }
+  .cycle-step h3{
+    margin:12px 0 8px;font-size:16px;font-weight:700;color:var(--ink);
+  }
+  .cycle-step p{
+    margin:0;font-size:12.5px;color:var(--ink-soft);line-height:1.75;
+  }
+  .cycle-arrow{
+    display:flex;align-items:center;justify-content:center;
+    width:44px;color:var(--vermillion);font-size:20px;
+    flex:0 0 auto;
+  }
+  .cycle-loop{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin-top:24px;width:100%;
+    font-family:"Shippori Mincho",serif;font-size:13px;color:var(--moss);letter-spacing:.1em;
+  }
+  .cycle-loop .ln{flex:1 1 auto;height:1px;background:var(--paper-line);max-width:160px;}
+  @media (max-width:760px){
+    .cycle-steps{flex-direction:column;align-items:center;}
+    .cycle-arrow{transform:rotate(90deg);width:auto;height:28px;margin:2px 0;}
+    .cycle-step{width:100%;max-width:340px;}
+  }
+  @media (min-width:861px){
+    .cycle-steps{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cycle-radial .arrow-path{ stroke-dashoffset:0 !important; transition:none !important; }
+    .cycle-radial .cycle-node, .cycle-radial .cycle-center{
+      opacity:1 !important; transform:translate(-50%,-50%) scale(1) !important;
+      transition:none !important; transition-delay:0s !important;
+    }
+  }
+
+  .testimonial{
+    margin-top:64px;
+    max-width:680px;
+    border-left:3px solid var(--moss);
+    padding-left:26px;
+  }
+  .testimonial p{
+    font-family:"Shippori Mincho",serif;
+    font-size:17px;color:var(--ink);line-height:2;margin:0;
+  }
+  .testimonial .who{
+    display:block;margin-top:16px;font-family:"Noto Sans JP",sans-serif;
+    font-size:12.5px;color:var(--ink-soft);letter-spacing:.05em;
+  }
+
+  /* ---------- 事業領域 ---------- */
+  .biz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--paper-line);}
+  @media (max-width:860px){.biz-grid{grid-template-columns:1fr;}}
+  .biz-card{background:var(--bg);position:relative;display:flex;flex-direction:column;}
+  .biz-photo{aspect-ratio:4/3;overflow:hidden;}
+  .biz-placeholder{
+    aspect-ratio:4/3;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+    background:var(--bg-deep);
+  }
+  .biz-placeholder .ph-mark{width:38px;height:38px;opacity:.5;}
+  .biz-placeholder .ph-label{font-size:11px;letter-spacing:.25em;color:var(--ink-soft);}
+
+  .placeholder-box{
+    aspect-ratio:4/3;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    background:var(--bg-deep);
+    border-radius:2px;border:1px solid var(--paper-line);
+  }
+  .placeholder-box .ph-mark{width:34px;height:34px;opacity:.5;}
+  .placeholder-box .ph-label{font-size:10.5px;letter-spacing:.2em;color:var(--ink-soft);}
+  .biz-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .biz-body{padding:30px 30px 40px;position:relative;}
+  .biz-card .no{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--vermillion);letter-spacing:.1em;}
+  .biz-card h3{font-size:21px;margin:16px 0 6px;font-weight:700;}
+  .biz-card .sub{font-size:12.5px;color:var(--moss);margin-bottom:16px;letter-spacing:.03em;}
+  .biz-card p{font-size:14px;color:var(--ink-soft);margin:0;}
+
+  /* ---------- 実績 (縁カウント) ---------- */
+  .track{
+    display:flex;flex-direction:column;
+  }
+  .track-item{
+    display:grid;grid-template-columns:120px 1fr;gap:28px;
+    padding:30px 0;border-top:1px solid var(--paper-line);
+  }
+  .track-item:last-child{border-bottom:1px solid var(--paper-line);}
+  @media (max-width:640px){.track-item{grid-template-columns:1fr;gap:10px;}}
+  .track-item .en-count{font-size:14px;}
+  .track-item .stamp-mark{width:28px;height:28px;}
+  .track-item h3{margin:0 0 6px;font-size:17px;font-weight:700;}
+  .track-item .tag{font-size:11.5px;color:var(--moss);letter-spacing:.05em;margin-bottom:8px;display:block;}
+  .track-item p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+  .track-photo{margin-top:16px;max-width:420px;}
+  .track-photo img{width:100%;height:auto;border-radius:2px;border:1px solid var(--paper-line);}
+  .stat-row{display:flex;gap:36px;margin-top:14px;flex-wrap:wrap;}
+  .stat{font-family:"Shippori Mincho",serif;}
+  .stat b{font-size:22px;color:var(--vermillion);}
+  .stat span{display:block;font-size:11px;color:var(--ink-soft);font-family:"Noto Sans JP",sans-serif;letter-spacing:.05em;margin-top:2px;}
+
+  /* ---------- 慶元寺 venue ---------- */
+  .venue{background:var(--bg-deep);}
+  .venue-top{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;}
+  @media (max-width:860px){.venue-top{grid-template-columns:1fr;}}
+  .venue-photo-graphic{
+    aspect-ratio:3/4;border-radius:4px;
+    position:relative;overflow:hidden;
+    border:1px solid var(--paper-line);
+  }
+  .venue-photo-graphic img{width:100%;height:100%;object-fit:cover;}
+  .venue-photo-graphic::after{
+    content:"慶元寺 山門 / KEIGENJI";
+    position:absolute;bottom:16px;left:18px;
+    font-family:"Shippori Mincho",serif;font-size:13px;color:var(--ink);letter-spacing:.1em;
+    background:rgba(246,241,230,.82);padding:4px 10px;
+  }
+  .venue-facts{list-style:none;padding:0;margin:20px 0 0;font-size:13.5px;color:var(--ink-soft);}
+  .venue-facts li{padding:8px 0;border-bottom:1px dashed var(--paper-line);display:flex;justify-content:space-between;gap:16px;}
+  .venue-facts li b{color:var(--ink);font-weight:600;}
+  .venue-gallery{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .venue-gallery img{width:100%;height:150px;object-fit:cover;border-radius:2px;}
+
+  .opt-grid{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  @media (max-width:900px){.opt-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.opt-grid{grid-template-columns:1fr;}}
+  .opt-card{
+    background:var(--bg);border:1px solid var(--paper-line);border-radius:2px;overflow:hidden;
+  }
+  .opt-card .opt-photo{aspect-ratio:4/3;overflow:hidden;}
+  .opt-card .opt-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .opt-card .opt-photo img[src*="opt-shabutsu"]{object-position:center 43%;}
+  .opt-card .opt-body{padding:20px 22px;}
+  .opt-card .tag{font-size:10.5px;letter-spacing:.2em;color:var(--vermillion);}
+  .opt-card h5{margin:10px 0 8px;font-size:15.5px;font-weight:700;}
+  .opt-card p{margin:0;font-size:12.5px;color:var(--ink-soft);}
+
+
+  /* ---------- ありたい姿 ---------- */
+  .vision{
+    position:relative;
+    color:#f3ede0;text-align:center;
+    padding:150px 0;
+    overflow:hidden;
+  }
+  .vision-bg{
+    position:absolute;inset:0;
+    background:url('../img/vision-town.jpg') center 30%/cover;
+    background:image-set(url('../img/vision-town.webp') type('image/webp'), url('../img/vision-town.jpg') type('image/jpeg')) center 30%/cover;
+    filter:grayscale(1) contrast(1.05);
+  }
+  .vision-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(27,42,65,.88), rgba(27,42,65,.93));
+  }
+  .vision .wrap{position:relative;z-index:1;}
+  .vision .eyebrow{color:#e8a390;}
+  .vision h2{
+    font-size:clamp(26px,4.6vw,52px);
+    line-height:1.6;font-weight:700;margin:22px auto 0;max-width:820px;
+  }
+  .vision h2 em{color:#e8a390;font-style:normal;}
+  .vision p{max-width:560px;margin:26px auto 0;color:#cfc6b3;font-size:14.5px;}
+
+  /* ---------- 代表 ---------- */
+  .rep{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+  @media (max-width:800px){.rep{grid-template-columns:1fr;}}
+  .rep-photo{
+    aspect-ratio:3/4;border-radius:4px;position:relative;overflow:hidden;
+    border:1px solid var(--paper-line);
+  }
+  .rep-photo img{width:100%;height:100%;object-fit:cover;}
+  .rep-photo .stamp{position:absolute;bottom:18px;right:18px;width:56px;height:56px;}
+  .rep h3{font-size:30px;font-weight:800;margin:4px 0 0;}
+  .rep .role{font-size:13px;color:var(--gold-text);letter-spacing:.06em;margin-top:6px;}
+  .rep p{font-size:14.5px;color:var(--ink-soft);margin-top:20px;}
+  .rep .keywords{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+  .rep .keywords span{
+    font-size:11.5px;color:var(--ink-soft);border:1px solid var(--paper-line);padding:6px 12px;border-radius:999px;
+  }
+
+  /* ---------- footer / contact ---------- */
+  footer{
+    background-color:var(--bg-deep);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%23BE3B26' stroke-opacity='0.06' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='32'/%3E%3Ccircle cx='64' cy='0' r='32'/%3E%3Ccircle cx='0' cy='64' r='32'/%3E%3Ccircle cx='64' cy='64' r='32'/%3E%3Ccircle cx='32' cy='32' r='32'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:64px 64px;
+    padding:110px 0 60px;
+    text-align:center;
+  }
+  footer .closing{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(20px,3vw,30px);
+    color:var(--ink);
+    max-width:640px;margin:0 auto;line-height:1.9;
+  }
+  footer .mail{
+    display:inline-block;margin-top:34px;
+    font-size:14px;letter-spacing:.05em;
+    border-bottom:1px solid var(--ink);padding-bottom:2px;
+    text-decoration:none;color:var(--ink);
+  }
+  footer .fine{margin-top:60px;font-size:11px;color:var(--ink-soft);letter-spacing:.05em;}
+
+  /* ---------- external embeds & links (2026/08/23 追加) ---------- */
+  .ext-link{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12.5px;color:var(--ink-soft);
+    border:1px solid var(--paper-line);
+    padding:9px 18px;border-radius:999px;
+    text-decoration:none;white-space:nowrap;
+    transition:border-color .3s ease, color .3s ease, background-color .3s ease;
+  }
+  .ext-link:hover{border-color:var(--vermillion);color:var(--vermillion-deep);background:rgba(190,59,38,.05);}
+
+  .note-ref{margin-top:32px;}
+  .note-ref-label{font-size:12.5px;color:var(--ink-soft);letter-spacing:.03em;margin-bottom:14px;}
+  .note-embed-wrap{max-width:480px;}
+  .note-embed-wrap iframe{width:100%;border:0;border-radius:4px;display:block;}
+  .note-embed-wrap .ext-link{margin-top:12px;}
+
+  .resource-block{margin-top:28px;}
+  .resource-label{font-size:11.5px;letter-spacing:.15em;color:var(--moss);margin-bottom:12px;}
+
+  .kendama-feature{
+    margin-top:80px;padding-top:56px;
+    border-top:1px solid var(--paper-line);
+  }
+  .kendama-feature-head{margin-bottom:36px;}
+  .kendama-feature-head .tag{font-size:11.5px;letter-spacing:.15em;color:var(--vermillion);}
+  .kendama-feature-head h4{margin:10px 0 0;font-size:19px;font-weight:700;color:var(--ink);}
+  .kendama-feature-desc{margin:14px 0 0;font-size:14px;color:var(--ink-soft);max-width:640px;}
+  .kendama-feature-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start;}
+  @media (max-width:800px){ .kendama-feature-grid{grid-template-columns:1fr;} }
+  .video-embed{
+    position:relative;width:100%;aspect-ratio:16/9;
+    border-radius:4px;overflow:hidden;border:1px solid var(--paper-line);background:#000;
+  }
+  .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .photo-embed{
+    position:relative;width:100%;aspect-ratio:4/3;
+    border-radius:4px;overflow:hidden;border:1px solid var(--paper-line);
+  }
+  .photo-embed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .media-links{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+  .media-links-label{font-size:11.5px;letter-spacing:.1em;color:var(--ink-soft);margin-right:2px;}
+
+  .footer-note{margin-top:22px;}
+
+  /* ---------- P0: hero CTA / buttons / contact form (2026/08/23 追加) ---------- */
+  .hero .hero-desc{
+    margin-top:18px;max-width:560px;font-size:15px;color:var(--ink-soft);line-height:1.9;
+  }
+  .hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:44px;padding:12px 26px;
+    border-radius:999px;font-size:13.5px;letter-spacing:.04em;
+    text-decoration:none;white-space:nowrap;
+    transition:background-color .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .btn-primary{background:var(--vermillion);color:#fff;border:1px solid var(--vermillion);}
+  .btn-primary:hover{background:var(--vermillion-deep);border-color:var(--vermillion-deep);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--paper-line);}
+  .btn-outline:hover{border-color:var(--vermillion);color:var(--vermillion-deep);transform:translateY(-2px);}
+  @media (max-width:520px){
+    .hero-cta{flex-direction:column;align-items:stretch;}
+    .btn{width:100%;}
+  }
+
+  .contact-form{max-width:640px;}
+  .field{margin-bottom:22px;}
+  .field label{display:block;font-size:13px;color:var(--ink);margin-bottom:8px;letter-spacing:.03em;}
+  .field .req{color:var(--vermillion);font-size:11px;margin-left:4px;}
+  .field input[type=text], .field input[type=email], .field input[type=number], .field select, .field textarea{
+    width:100%;font-family:inherit;font-size:14px;color:var(--ink);
+    background:rgba(255,255,255,.55);border:1px solid var(--paper-line);border-radius:2px;
+    padding:12px 14px;min-height:44px;
+  }
+  .field textarea{min-height:120px;resize:vertical;}
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible{
+    outline:2px solid var(--vermillion);outline-offset:1px;
+  }
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:640px){ .field-row{grid-template-columns:1fr;} }
+  .field-checkbox label{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-soft);}
+  .field-checkbox input{margin-top:3px;width:18px;height:18px;flex:0 0 auto;}
+  .field-error{margin:8px 0 0;font-size:12px;color:var(--vermillion-deep);display:none;}
+  .field-error.show{display:block;}
+  .field-honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .form-status{margin:20px 0;font-size:13.5px;min-height:1.4em;}
+  .form-status.success{color:var(--moss);}
+  .form-status.error{color:var(--vermillion-deep);}
+  .form-fallback{margin-top:20px;font-size:12px;color:var(--ink-soft);}
+  #cfSubmit:disabled{opacity:.6;cursor:not-allowed;}
+
+  /* ---------- micro-interactions & scroll states (2026/08/22 追加) ---------- */
+  header{ transition: background-color .4s ease, backdrop-filter .4s ease, border-color .4s ease; }
+  header.scrolled{
+    background:rgba(246,241,230,.72);
+    backdrop-filter:blur(10px) saturate(140%);
+    -webkit-backdrop-filter:blur(10px) saturate(140%);
+    border-bottom:1px solid var(--paper-line);
+  }
+  header.on-dark .brandmark, header.on-dark nav a{ color:#f3ede0; }
+  header.on-dark.scrolled{
+    background:rgba(27,42,65,.55);
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+
+  nav a{ position:relative; padding-bottom:4px; }
+  nav a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background:currentColor; transition:width .3s ease;
+  }
+  nav a:hover::after, nav a.active::after{ width:100%; }
+  nav a.active{ opacity:1; }
+
+  .scroll-cue{ text-decoration:none; cursor:pointer; }
+
+  .reveal.js-anim{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.js-anim.in-view{ opacity:1; transform:translateY(0); }
+
+  .reveal.js-anim .sec-head h2::after{
+    transform:scaleX(0);
+    transition:transform 1s cubic-bezier(.22,1,.36,1) .25s;
+  }
+  .reveal.js-anim.in-view .sec-head h2::after{ transform:scaleX(1); }
+
+  .biz-photo img, .opt-photo img, .venue-photo-graphic img{
+    transition:transform .7s cubic-bezier(.22,1,.36,1);
+  }
+  .biz-card:hover .biz-photo img,
+  .opt-card:hover .opt-photo img,
+  .venue-photo-graphic:hover img{ transform:scale(1.06); }
+
+  .biz-card, .opt-card, .cycle-step{
+    transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+  }
+  .biz-card:hover, .opt-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 24px 44px -28px rgba(27,42,65,.28);
+  }
+  .cycle-step:hover{
+    transform:translateY(-6px);
+    border-color:var(--vermillion);
+    box-shadow:0 20px 36px -24px rgba(27,42,65,.22);
+  }
+
+  .track-item{ transition:background-color .3s ease; }
+  .track-item:hover{ background:rgba(190,59,38,.04); }
+  .stamp-mark svg{ transition:transform .4s ease; }
+  .track-item:hover .stamp-mark svg{ transform:rotate(-8deg) scale(1.08); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal.js-anim{ opacity:1; transform:none; transition:none; }
+    .reveal.js-anim .sec-head h2::after{ transform:none; transition:none; }
+    .biz-photo img, .opt-photo img, .venue-photo-graphic img,
+    .biz-card, .opt-card, .cycle-step, .stamp-mark svg{ transition:none; }
+  }
