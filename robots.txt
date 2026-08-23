@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://korakutei.example/sitemap.xml
+Sitemap: https://korakutei.github.io/korakutei-site/sitemap.xml
