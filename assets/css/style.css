@@ -389,8 +389,8 @@
   }
 
   /* ---------- 事業領域 ---------- */
-  .biz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--paper-line);}
-  @media (max-width:860px){.biz-grid{grid-template-columns:1fr;}}
+  .biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--paper-line);}
+  @media (max-width:1000px){.biz-grid{grid-template-columns:1fr;}}
   .biz-card{background:var(--bg);position:relative;display:flex;flex-direction:column;}
   .biz-photo{aspect-ratio:4/3;overflow:hidden;}
   .biz-placeholder{
@@ -440,6 +440,8 @@
 
   /* ---------- 慶元寺 venue ---------- */
   .venue{background:var(--bg-deep);}
+  .lab-sub-head{margin-top:72px;padding-top:56px;border-top:1px solid var(--paper-line);}
+  .lab-sub-head h3{font-size:clamp(22px,3vw,32px);font-weight:700;margin:12px 0 0;color:var(--ink);font-family:"Shippori Mincho",serif;}
   .venue-top{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;}
   @media (max-width:860px){.venue-top{grid-template-columns:1fr;}}
   .venue-photo-graphic{
@@ -550,6 +552,8 @@
     transition:border-color .3s ease, color .3s ease, background-color .3s ease;
   }
   .ext-link:hover{border-color:var(--vermillion);color:var(--vermillion-deep);background:rgba(190,59,38,.05);}
+  .ext-link[aria-disabled="true"]{ opacity:.55;cursor:default;margin-top:18px; }
+  .ext-link[aria-disabled="true"]:hover{ border-color:var(--paper-line);color:var(--ink-soft);background:none; }
 
   .note-ref{margin-top:32px;}
   .note-ref-label{font-size:12.5px;color:var(--ink-soft);letter-spacing:.03em;margin-bottom:14px;}
