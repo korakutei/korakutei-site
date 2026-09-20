@@ -8,3 +8,6 @@ assets/img/グランハマー.webp
 
 # local preview only (not part of the published site)
 server.ps1
+
+# 動画の元データ（YouTube限定公開でホストするため、リポジトリには含めない）
+動画/

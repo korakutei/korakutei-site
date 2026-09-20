@@ -1,6 +1,6 @@
 (function(){
   var header = document.querySelector('header');
-  var darkSections = document.querySelectorAll('.vmv, .vision');
+  var darkSections = document.querySelectorAll('.vmv, .vision, .movie-sec');
 
   function updateHeader(){
     var probeY = 44;

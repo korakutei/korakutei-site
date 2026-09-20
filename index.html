@@ -73,6 +73,7 @@
   <nav id="primaryNav">
     <a href="#about">交樂庭とは</a>
     <a href="#capital">縁的資本</a>
+    <a href="#movie" hidden>ムービー</a>
     <a href="#business">できること</a>
     <a href="#track">プロジェクト</a>
     <a href="#lab">喜多見LAB</a>
@@ -321,6 +322,136 @@
   </div>
 </section>
 
+
+<!-- ==========================================================
+     多言語ブランドムービー（#movie）
+     YouTubeの動画IDは assets/js/movie.js の先頭で設定する。
+     IDが1つも設定されていない間は、このセクションごと非表示（hidden）。
+     ========================================================== -->
+<section class="sec movie-sec reveal" id="movie" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">BRAND MOVIE ｜ 多言語ブランドムービー</span>
+      <h2>同じ景色を、三つの言語で。</h2>
+      <p class="lead">交樂庭が制作したブランドムービーです。映像は一本。そこに日本語・英語・スペイン語のナレーションを載せ替えることで、届けたい相手の言葉で、同じ景色を語りはじめます。</p>
+    </div>
+
+    <div class="movie-demo" data-movie>
+      <p class="movie-note-top"><span class="movie-note-mark" aria-hidden="true"></span>3つとも、<b>まったく同じ映像</b>です。ちがうのは、流れる言葉だけ。</p>
+
+      <div class="movie-panels" role="group" aria-label="言語別のブランドムービー">
+
+        <article class="movie-panel is-active" data-lang="ja">
+          <div class="movie-screen">
+            <div class="movie-mount" id="movieMount-ja"></div>
+            <button type="button" class="movie-cover" data-movie-cover aria-label="日本語ナレーションで再生する">
+              <picture>
+                <source srcset="assets/img/movie-poster.webp" type="image/webp">
+                <img src="assets/img/movie-poster.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="慶元寺の参道を歩く、着物姿の浦野雄次">
+              </picture>
+              <span class="movie-cover-veil" aria-hidden="true"></span>
+              <span class="movie-play" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"></circle><path d="M26.5 21.5 44 32 26.5 42.5Z" fill="currentColor"></path></svg>
+              </span>
+              <span class="movie-cover-cap" data-movie-cap aria-hidden="true">この言語で聴く</span>
+            </button>
+          </div>
+          <div class="movie-meta">
+            <span class="movie-lang">日本語<span class="movie-now" aria-hidden="true">再生中</span></span>
+            <span class="movie-lang-sub">JAPANESE ／ ナレーション</span>
+          </div>
+        </article>
+
+        <article class="movie-panel" data-lang="en">
+          <div class="movie-screen">
+            <div class="movie-mount" id="movieMount-en"></div>
+            <button type="button" class="movie-cover" data-movie-cover aria-label="英語ナレーションで再生する">
+              <picture>
+                <source srcset="assets/img/movie-poster.webp" type="image/webp">
+                <img src="assets/img/movie-poster.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="慶元寺の参道を歩く、着物姿の浦野雄次（英語ナレーション版）">
+              </picture>
+              <span class="movie-cover-veil" aria-hidden="true"></span>
+              <span class="movie-play" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"></circle><path d="M26.5 21.5 44 32 26.5 42.5Z" fill="currentColor"></path></svg>
+              </span>
+              <span class="movie-cover-cap" data-movie-cap aria-hidden="true">この言語で聴く</span>
+            </button>
+          </div>
+          <div class="movie-meta">
+            <span class="movie-lang">英語<span class="movie-now" aria-hidden="true">再生中</span></span>
+            <span class="movie-lang-sub">ENGLISH ／ ナレーション</span>
+          </div>
+        </article>
+
+        <article class="movie-panel" data-lang="es">
+          <div class="movie-screen">
+            <div class="movie-mount" id="movieMount-es"></div>
+            <button type="button" class="movie-cover" data-movie-cover aria-label="スペイン語ナレーションで再生する">
+              <picture>
+                <source srcset="assets/img/movie-poster.webp" type="image/webp">
+                <img src="assets/img/movie-poster.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="慶元寺の参道を歩く、着物姿の浦野雄次（スペイン語ナレーション版）">
+              </picture>
+              <span class="movie-cover-veil" aria-hidden="true"></span>
+              <span class="movie-play" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".5"></circle><path d="M26.5 21.5 44 32 26.5 42.5Z" fill="currentColor"></path></svg>
+              </span>
+              <span class="movie-cover-cap" data-movie-cap aria-hidden="true">この言語で聴く</span>
+            </button>
+          </div>
+          <div class="movie-meta">
+            <span class="movie-lang">スペイン語<span class="movie-now" aria-hidden="true">再生中</span></span>
+            <span class="movie-lang-sub">ESPAÑOL ／ ナレーション</span>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="movie-swipe" aria-hidden="true">横にスワイプして、3言語を見比べる</p>
+      <p class="movie-hint">パネルを選ぶと、<b>再生位置はそのまま</b>に、同じカットの続きが別の言語で流れます。</p>
+      <p class="movie-fallback" data-movie-fallback hidden>この環境では動画を再生できませんでした。<a href="https://www.youtube.com/@korakuteiyuji1863" target="_blank" rel="noopener">YouTubeで見る ↗</a></p>
+    </div>
+
+    <ul class="movie-spec">
+      <li><span class="k">尺</span><span class="v">45秒</span></li>
+      <li><span class="k">形式</span><span class="v">縦型 9:16 ／ 1080×1920</span></li>
+      <li><span class="k">言語</span><span class="v">日本語・英語・スペイン語</span></li>
+      <li><span class="k">制作</span><span class="v">企画・撮影・編集・多言語ナレーション</span></li>
+    </ul>
+
+    <div class="movie-value">
+      <div class="movie-value-head">
+        <span class="eyebrow">WHY IT MATTERS ｜ この一本が示すもの</span>
+        <h3>撮るのは、一度きり。<br class="br-sp">届く先は、言語の数だけ。</h3>
+      </div>
+      <ul class="movie-value-list">
+        <li>
+          <span class="movie-value-num">01</span>
+          <h4>一つの素材から、多言語へ</h4>
+          <p>ロケも編集も、やり直しません。翻訳・ナレーション・整音を載せ替えるだけで、届けたい相手の数だけ言語が増えていく。インバウンド発信にかかる時間と費用が、根本から変わります。</p>
+        </li>
+        <li>
+          <span class="movie-value-num">02</span>
+          <h4>縦型のまま、手のひらにも、まちの画面にも</h4>
+          <p>9:16で仕上げているので、Instagram・TikTok・YouTube ショートへ、そして施設や店舗のデジタルサイネージへ。書き出し直しをせずに、そのまま展開できます。</p>
+        </li>
+        <li>
+          <span class="movie-value-num">03</span>
+          <h4>通い慣れた人間が、カメラを置く</h4>
+          <p>寺の参道に朝の光が差す時間も、商店街が暮れていく速さも、知っているから待てる。だから説明ではなく、その土地の体温が残る映像になります。</p>
+        </li>
+      </ul>
+      <p class="movie-value-close">言葉が変わっても、<br class="br-sp">縁は、同じ景色から始まる。</p>
+    </div>
+
+    <div class="movie-cta">
+      <p class="movie-cta-text">自治体・施設・事業者さまのブランドムービー制作と、その多言語展開をお手伝いしています。</p>
+      <div class="movie-cta-btns">
+        <a href="#business" class="btn btn-outline">コンテンツ開発支援について</a>
+        <a href="#contact" class="btn btn-primary">映像制作を相談する</a>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="sec reveal" id="business">
   <div class="wrap">
     <div class="sec-head">
@@ -814,6 +945,7 @@
 </footer>
 
 <script src="https://assets.st-note.com/js/embed.js"></script>
+<script src="assets/js/movie.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 
 </body>
