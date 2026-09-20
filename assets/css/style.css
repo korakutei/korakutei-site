@@ -439,14 +439,22 @@
     font-size:14px;font-weight:600;color:var(--ink);line-height:1.9;letter-spacing:.01em;
   }
 
+  /* 落款（角印）。
+     もとは破線の円だったが、横組み2行に対して円は上下に余白が偏り、
+     一方で左右は輪に文字がぶつかる（130pxの円に対し文字幅が約104px）。
+     角印にすると余白が四辺で揃い、どの画面幅でも文字がはみ出さない。 */
   .capital-stamp{
-    margin-top:40px;position:relative;width:130px;height:130px;
-    display:flex;align-items:center;justify-content:center;
+    margin-top:clamp(28px,3vw,40px);
+    display:flex;width:fit-content;
+    align-items:center;justify-content:center;
+    padding:clamp(14px,1.6vw,18px) clamp(18px,2vw,24px);
+    border:2px dashed var(--gold);
+    border-radius:6px;
   }
-  .capital-stamp-ring{ position:absolute;inset:0;width:100%;height:100%; }
   .capital-stamp-text{
-    position:relative;font-family:"Shippori Mincho",serif;font-size:13px;
-    color:var(--ink);text-align:center;line-height:1.7;letter-spacing:.03em;
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(12.5px,1.4vw,14px);
+    color:var(--ink);text-align:center;line-height:1.85;letter-spacing:.06em;
   }
 
   /* セクションを締める思想の一文 */
@@ -470,10 +478,16 @@
     .capital-role .capital-side-text{ font-size:13.5px; }
     .capital-value-title{ font-size:12px;letter-spacing:.12em; }
     .capital-value-note{ font-size:12.5px; }
-    .capital-stamp{
-      margin:36px auto 0;width:150px;height:150px;
-    }
-    .capital-stamp-text{ font-size:14px; }
+    /* 印の前後の余白を詰める（中央寄せは下の 1179px 以下のルールで行う） */
+    .capital-stamp{ margin-top:28px; }
+    .capital-creed{ margin-top:40px; }
+    .capital-creed::before{ height:26px;margin-bottom:18px; }
+  }
+  /* .capital-layout が1カラムになるのは 1180px 未満。
+     その範囲では印が幅いっぱいの本文の左端に取り残されるため、中央に置く
+     （1180px以上では、細い「交樂庭の役割」列の文末に捺した落款として左揃え） */
+  @media (max-width:1179px){
+    .capital-stamp{ margin-inline:auto; }
   }
   @media (max-width:430px){
     .capital-define{ font-size:14.5px; }
