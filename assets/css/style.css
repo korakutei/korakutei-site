@@ -1207,7 +1207,9 @@
     gap:clamp(12px,1.7vw,24px);
     align-items:start;
   }
-  .movie-panels.is-few{grid-template-columns:repeat(auto-fit,minmax(0,280px));justify-content:center;}
+  /* 動画が1〜2本しか設定されていないとき（auto-fitだと空トラックが1つ残るのでflexにする） */
+  .movie-panels.is-few{display:flex;justify-content:center;}
+  .movie-panels.is-few .movie-panel{flex:0 1 280px;}
   .movie-panel{min-width:0;}
   .movie-screen{
     position:relative;aspect-ratio:9/16;
