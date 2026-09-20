@@ -97,7 +97,48 @@
   var CONTACT_ENDPOINT = ''; // TODO: Formspree等の外部フォームサービスのエンドポイントURLを設定するとAjax送信に切り替わります
   var statusEl = document.getElementById('formStatus');
   var submitBtn = document.getElementById('cfSubmit');
+  var howtoEl = document.getElementById('formHowto');
+  var rescueEl = document.getElementById('formRescue');
+  var copyBtn = document.getElementById('cfCopy');
+  var copyNote = document.getElementById('cfCopyNote');
   var submitting = false;
+  var lastMailBody = '';
+
+  // 送信先が設定されたら、メール前提の案内とボタン文言を通常の送信に戻す
+  if(CONTACT_ENDPOINT){
+    if(howtoEl) howtoEl.hidden = true;
+    submitBtn.textContent = '相談してみる';
+  }
+
+  if(copyBtn){
+    copyBtn.addEventListener('click', function(){
+      var text = 'お問い合わせ先: korakutei29@gmail.com\n\n' + lastMailBody;
+      function done(ok){
+        if(!copyNote) return;
+        copyNote.textContent = ok
+          ? 'コピーしました。メールに貼り付けてお送りください。'
+          : 'コピーできませんでした。お手数ですが入力内容を手動でお送りください。';
+        copyNote.className = 'form-rescue-note ' + (ok ? 'ok' : 'ng');
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+        return;
+      }
+      // clipboard API が使えない環境向けのフォールバック
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly','');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        done(ok);
+      }catch(e){ done(false); }
+    });
+  }
 
   function setError(id, message){
     var el = form.querySelector('[data-error-for="'+id+'"]');
@@ -201,11 +242,18 @@
         submitBtn.disabled = false;
       });
     } else {
+      // 送信先が未設定のあいだはメール送信。
+      // mailto は「開いたかどうか」をJSから知る手段がないため、成功とは言い切らず、
+      // 開かなかった人向けの受け皿（コピー／直接メール）を必ず出しておく。
       var subject = encodeURIComponent('【交樂庭HP】お問い合わせ（' + data.category + '）');
       var body = encodeURIComponent(buildMailBody(data));
       window.location.href = 'mailto:korakutei29@gmail.com?subject=' + subject + '&body=' + body;
-      statusEl.textContent = 'メールソフトが開きます。内容をご確認の上、送信してください。';
-      statusEl.className = 'form-status success';
+
+      lastMailBody = buildMailBody(data);
+      statusEl.textContent = 'メールソフトを起動しました。内容をご確認のうえ、そのまま送信してください。';
+      statusEl.className = 'form-status notice';
+      if(rescueEl) rescueEl.hidden = false;
+
       trackContactSubmit();
       submitting = false;
       submitBtn.disabled = false;

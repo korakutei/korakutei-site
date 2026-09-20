@@ -98,6 +98,38 @@
   <a href="#about" class="scroll-cue" aria-label="次のセクションへスクロール"><span>SCROLL</span><span class="line"></span></a>
 </section>
 
+<!-- ヒーロー直下の要約帯。
+     理念のセクションが続くため、最初の数秒で「何を頼める会社か」が
+     伝わるよう、3つの事業領域の見出しだけを先に出しておく。 -->
+<div class="offer-strip">
+  <div class="wrap">
+    <p class="offer-strip-label">ご相談いただけること</p>
+    <ul class="offer-strip-list">
+      <li>
+        <a href="#business">
+          <span class="no">01</span>
+          <span class="t">地域共創プロデュース</span>
+          <span class="s">人をつなぐ。</span>
+        </a>
+      </li>
+      <li>
+        <a href="#business">
+          <span class="no">02</span>
+          <span class="t">体験・コンテンツプロデュース</span>
+          <span class="s">体験をつくる。</span>
+        </a>
+      </li>
+      <li>
+        <a href="#business">
+          <span class="no">03</span>
+          <span class="t">地域資産プロデュース</span>
+          <span class="s">場所を活かす。</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <section class="sec reveal" id="about">
   <div class="wrap">
     <div class="sec-head">
@@ -502,12 +534,12 @@
         <span class="tag">体験・コンテンツプロデュース ｜ EQプログラム</span>
         <h4>けん玉を通じたひろがり</h4>
       </div>
-      <div class="kendama-feature-grid">
-        <div class="video-embed">
-          <!-- TODO(要差し替え): この動画IDは交樂庭と無関係の第三者動画（hirayama 195「2015年 第41回新宿三井ビルのど自慢大会」）です。
-               正しいけん玉体験の動画IDに差し替えるか、このブロックごと削除してください。 -->
-          <iframe src="https://www.youtube.com/embed/F6_jayFb5O4" title="けん玉体験の様子" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+      <!-- 2026/09/20 動画枠を撤去。
+           掲載されていた動画ID F6_jayFb5O4 は交樂庭と無関係の第三者動画
+           （hirayama 195「2015年 第41回新宿三井ビルのど自慢大会」）だったため。
+           正しいけん玉体験の動画が用意できたら、ドローン映像と同じ
+           <div class="video-embed" data-yt="動画ID"> ＋ .video-facade の形で戻せます。 -->
+      <div class="kendama-feature-grid is-single">
         <div class="note-embed-wrap">
           <iframe class="note-embed" style="border:0;width:100%;height:405px;" src="https://note.com/embed/notes/n584614140f46" title="けん玉についてのnote記事" loading="lazy"></iframe>
         </div>
@@ -1008,9 +1040,26 @@
 
       <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
 
-      <button type="submit" class="btn btn-primary" id="cfSubmit">相談してみる</button>
+      <!-- 送信先（CONTACT_ENDPOINT）が未設定のあいだはメール送信になるため、
+           押す前に何が起きるかを明示しておく。設定されると main.js が自動で消す。 -->
+      <p class="form-howto" id="formHowto">
+        <span class="form-howto-mark" aria-hidden="true">✉</span>
+        ボタンを押すと、入力内容をそのまま本文に入れた<b>メールが立ち上がります</b>。内容をご確認のうえ、お使いのメールソフトから送信してください。
+      </p>
 
-      <p class="form-fallback">うまく送信できない場合は、<a href="mailto:korakutei29@gmail.com">korakutei29@gmail.com</a> へ直接ご連絡ください。</p>
+      <button type="submit" class="btn btn-primary" id="cfSubmit">入力内容をメールで送る</button>
+
+      <!-- メールソフトが開かなかった人の受け皿。送信後にJSが表示する -->
+      <div class="form-rescue" id="formRescue" hidden>
+        <p class="form-rescue-lead"><b>メールソフトが開かなかった場合</b>は、こちらからお送りください。</p>
+        <div class="form-rescue-actions">
+          <button type="button" class="btn btn-outline" id="cfCopy">入力内容をコピーする</button>
+          <a class="btn btn-outline" href="mailto:korakutei29@gmail.com">korakutei29@gmail.com を開く</a>
+        </div>
+        <p class="form-rescue-note" id="cfCopyNote" role="status" aria-live="polite"></p>
+      </div>
+
+      <p class="form-fallback">お電話やメールでのご相談も承ります。<a href="mailto:korakutei29@gmail.com">korakutei29@gmail.com</a></p>
     </form>
   </div>
 </section>

@@ -940,6 +940,7 @@
     font-size:clamp(20px,3vw,30px);
     color:var(--ink);
     max-width:640px;margin:0 auto;line-height:1.9;
+    word-break:auto-phrase;line-break:strict;
   }
   footer .mail{
     display:inline-block;margin-top:34px;
@@ -1034,6 +1035,8 @@
   @media (max-width:640px){ .field-row{grid-template-columns:1fr;} }
   .field-checkbox label{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-soft);}
   .field-checkbox input{margin-top:3px;width:18px;height:18px;flex:0 0 auto;}
+  /* flexアイテムなので、指定がないと「必須」が1文字ずつ縦に折り返される */
+  .field-checkbox .req{flex:0 0 auto;white-space:nowrap;}
   .field-error{margin:8px 0 0;font-size:12px;color:var(--vermillion-deep);display:none;}
   .field-error.show{display:block;}
   .field-honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
@@ -1566,3 +1569,96 @@
     .yokocho-links .btn{width:100%;}
     .ext-link-gold{text-align:center;}
   }
+
+  /* ==========================================================
+     ヒーロー直下の要約帯（.offer-strip）
+     理念のセクションが続くため、最初の数秒で
+     「何を頼める会社か」だけ先に伝える。
+     ========================================================== */
+  .offer-strip{
+    background:var(--bg-deep);
+    border-top:1px solid var(--paper-line);
+    border-bottom:1px solid var(--paper-line);
+    padding:clamp(22px,2.6vw,34px) 0;
+  }
+  .offer-strip-label{
+    margin:0 0 clamp(14px,1.6vw,20px);
+    font-size:10.5px;letter-spacing:.28em;font-weight:600;
+    color:var(--vermillion);text-transform:uppercase;
+  }
+  .offer-strip-list{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--paper-line);
+  }
+  .offer-strip-list li{background:var(--bg-deep);}
+  .offer-strip-list a{
+    display:flex;flex-direction:column;gap:5px;
+    padding:clamp(14px,1.6vw,20px) clamp(14px,1.8vw,24px);
+    text-decoration:none;height:100%;
+    transition:background-color .3s ease;
+  }
+  .offer-strip-list a:hover{background:rgba(190,59,38,.045);}
+  .offer-strip-list .no{
+    font-family:"Shippori Mincho",serif;
+    font-size:10.5px;letter-spacing:.24em;color:var(--gold-text);
+  }
+  .offer-strip-list .t{
+    font-family:"Shippori Mincho","Noto Serif JP",serif;
+    font-size:clamp(14px,1.5vw,16.5px);font-weight:600;
+    line-height:1.6;color:var(--ink);
+    word-break:auto-phrase;line-break:strict;
+  }
+  .offer-strip-list .s{font-size:11.5px;letter-spacing:.06em;color:var(--ink-soft);}
+  .offer-strip-list a:hover .t{color:var(--vermillion-deep);}
+  .offer-strip-list a:focus-visible{outline:2px solid var(--vermillion);outline-offset:-2px;}
+  @media (max-width:720px){
+    .offer-strip-list{grid-template-columns:1fr;}
+    .offer-strip-list a{
+      flex-direction:row;align-items:baseline;flex-wrap:wrap;
+      gap:4px 12px;min-height:44px;
+    }
+    .offer-strip-list .s{flex-basis:100%;}
+  }
+
+  /* けん玉ブロック：動画枠を外したので1カラムに */
+  .kendama-feature-grid.is-single{grid-template-columns:1fr;}
+
+  /* ==========================================================
+     問い合わせフォーム：メール送信になることを事前に伝え、
+     メールソフトが開かなかった人の受け皿を用意する
+     ========================================================== */
+  .form-status.notice{color:var(--gold-text);}
+  /* flex にすると、テキストノードと <b> が別々のflexアイテムになって
+     個別に折り返してしまうので、ここは通常のブロックのまま流す */
+  .form-howto{
+    margin:0 0 20px;padding:14px 16px;
+    background:rgba(166,129,60,.07);
+    border:1px solid rgba(166,129,60,.28);
+    border-radius:3px;
+    font-size:12.5px;line-height:1.95;color:var(--ink-soft);
+    word-break:auto-phrase;line-break:strict;
+  }
+  .form-howto b{color:var(--ink);font-weight:600;}
+  .form-howto-mark{margin-right:8px;color:var(--gold-text);font-size:14px;}
+  .form-howto[hidden]{display:none;}
+
+  .form-rescue{
+    margin-top:22px;padding:18px 20px;
+    background:var(--bg-card);
+    border:1px solid var(--paper-line);
+    border-radius:3px;
+  }
+  .form-rescue[hidden]{display:none;}
+  .form-rescue-lead{margin:0 0 14px;font-size:13px;line-height:1.9;color:var(--ink-soft);}
+  .form-rescue-lead b{color:var(--ink);font-weight:600;}
+  .form-rescue-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .form-rescue-actions .btn{font-size:12.5px;padding:10px 20px;}
+  .form-rescue-note{margin:12px 0 0;font-size:12px;min-height:1.4em;}
+  .form-rescue-note.ok{color:var(--moss);}
+  .form-rescue-note.ng{color:var(--vermillion-deep);}
+  @media (max-width:520px){
+    .form-rescue-actions{flex-direction:column;}
+    .form-rescue-actions .btn{width:100%;}
+  }
+  .form-fallback a{color:var(--vermillion-deep);}
