@@ -604,12 +604,24 @@
         <span class="tag">体験・コンテンツプロデュース ｜ EQプログラム</span>
         <h4>けん玉を通じたひろがり</h4>
       </div>
-      <!-- 2026/09/20 動画枠を撤去。
-           掲載されていた動画ID F6_jayFb5O4 は交樂庭と無関係の第三者動画
-           （hirayama 195「2015年 第41回新宿三井ビルのど自慢大会」）だったため。
-           正しいけん玉体験の動画が用意できたら、ドローン映像と同じ
-           div.video-embed[data-yt="動画ID"] ＋ a.video-facade の形で戻せます。 -->
-      <div class="kendama-feature-grid is-single">
+      <!-- 動画ID F6_jayFb5O4 は、会社対抗のど自慢大会のステージでの
+           けん玉パフォーマンスを収めたもの。イベント全体の記録として
+           第三者アカウント（hirayama 195）がアップしているため、
+           YouTube側のタイトルと投稿者名はイベント名義で表示される。 -->
+      <div class="kendama-feature-grid">
+        <div class="video-embed" data-yt="F6_jayFb5O4">
+          <a class="video-facade" href="https://www.youtube.com/watch?v=F6_jayFb5O4" target="_blank" rel="noopener">
+            <picture>
+              <source srcset="assets/img/video-kendama.webp" type="image/webp">
+              <img src="assets/img/video-kendama.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="ステージ上でけん玉を披露する様子">
+            </picture>
+            <span class="video-facade-veil" aria-hidden="true"></span>
+            <span class="video-facade-play" aria-hidden="true">
+              <svg viewBox="0 0 68 48"><path class="yt-bg" d="M66.5 7.5a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.4a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.5 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.4a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.5z"></path><path d="M27 34V14l18 10z" fill="#fff"></path></svg>
+            </span>
+            <span class="video-facade-cap">ステージでのけん玉パフォーマンスを再生</span>
+          </a>
+        </div>
         <div class="note-embed-wrap">
           <iframe class="note-embed" style="border:0;width:100%;height:405px;" src="https://note.com/embed/notes/n584614140f46" title="けん玉についてのnote記事" loading="lazy"></iframe>
         </div>
