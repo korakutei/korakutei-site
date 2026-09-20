@@ -699,7 +699,6 @@
 
   /* ---------- 事業領域 ---------- */
   .biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--paper-line);}
-  @media (max-width:1000px){.biz-grid{grid-template-columns:1fr;}}
   .biz-card{background:var(--bg);position:relative;display:flex;flex-direction:column;}
   .biz-photo{aspect-ratio:4/3;overflow:hidden;}
   .biz-placeholder{
@@ -724,6 +723,17 @@
   .biz-card h3{font-size:21px;margin:16px 0 6px;font-weight:700;}
   .biz-card .sub{font-size:12.5px;color:var(--moss);margin-bottom:16px;letter-spacing:.03em;}
   .biz-card p{font-size:14px;color:var(--ink-soft);margin:0;}
+  @media (max-width:1000px){
+    /* 1カラムになると、写真が「自分の見出し」より上に来るため、
+       境界が2pxの罫線だけでは直前のカードの本文に属して見えてしまう。
+       カードを枠で囲い、カード間の余白を広げて所属を明確にする */
+    .biz-grid{ grid-template-columns:1fr;background:none;gap:clamp(26px,5vw,38px); }
+    .biz-card{
+      background:var(--bg-card);
+      border:1px solid var(--paper-line);
+      border-radius:4px;overflow:hidden;
+    }
+  }
 
   /* ---------- 実績 (縁カウント) ---------- */
   .track{
@@ -1665,8 +1675,6 @@
     .offer-strip-list .s{flex-basis:100%;}
   }
 
-  /* けん玉ブロック：動画枠を外したので1カラムに */
-  .kendama-feature-grid.is-single{grid-template-columns:1fr;}
 
   /* ==========================================================
      問い合わせフォーム：メール送信になることを事前に伝え、
