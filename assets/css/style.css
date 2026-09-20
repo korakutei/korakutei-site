@@ -1516,6 +1516,15 @@
     word-break:auto-phrase;line-break:strict;
   }
   .yokocho-body p:last-child{margin-bottom:0;}
+  /* 先方サイトのキャッチをそのまま引く一行。
+     .yokocho-body p (0,1,1) を上回るよう、2クラスで指定する */
+  .yokocho-body .yokocho-catch{
+    font-family:"Shippori Mincho","Noto Serif JP",serif;
+    font-size:clamp(15px,1.7vw,18px);
+    font-weight:600;letter-spacing:.08em;
+    color:#E3C67F;
+    margin:0 0 18px;
+  }
   .yokocho-body b{color:#FFFBF3;font-weight:600;}
 
   .yokocho-types{
