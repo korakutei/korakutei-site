@@ -439,14 +439,22 @@
     font-size:14px;font-weight:600;color:var(--ink);line-height:1.9;letter-spacing:.01em;
   }
 
+  /* 落款（角印）。
+     もとは破線の円だったが、横組み2行に対して円は上下に余白が偏り、
+     一方で左右は輪に文字がぶつかる（130pxの円に対し文字幅が約104px）。
+     角印にすると余白が四辺で揃い、どの画面幅でも文字がはみ出さない。 */
   .capital-stamp{
-    margin-top:40px;position:relative;width:130px;height:130px;
-    display:flex;align-items:center;justify-content:center;
+    margin-top:clamp(28px,3vw,40px);
+    display:flex;width:fit-content;
+    align-items:center;justify-content:center;
+    padding:clamp(14px,1.6vw,18px) clamp(18px,2vw,24px);
+    border:2px dashed var(--gold);
+    border-radius:6px;
   }
-  .capital-stamp-ring{ position:absolute;inset:0;width:100%;height:100%; }
   .capital-stamp-text{
-    position:relative;font-family:"Shippori Mincho",serif;font-size:13px;
-    color:var(--ink);text-align:center;line-height:1.7;letter-spacing:.03em;
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(12.5px,1.4vw,14px);
+    color:var(--ink);text-align:center;line-height:1.85;letter-spacing:.06em;
   }
 
   /* セクションを締める思想の一文 */
@@ -470,10 +478,16 @@
     .capital-role .capital-side-text{ font-size:13.5px; }
     .capital-value-title{ font-size:12px;letter-spacing:.12em; }
     .capital-value-note{ font-size:12.5px; }
-    .capital-stamp{
-      margin:36px auto 0;width:150px;height:150px;
-    }
-    .capital-stamp-text{ font-size:14px; }
+    /* 印の前後の余白を詰める（中央寄せは下の 1179px 以下のルールで行う） */
+    .capital-stamp{ margin-top:28px; }
+    .capital-creed{ margin-top:40px; }
+    .capital-creed::before{ height:26px;margin-bottom:18px; }
+  }
+  /* .capital-layout が1カラムになるのは 1180px 未満。
+     その範囲では印が幅いっぱいの本文の左端に取り残されるため、中央に置く
+     （1180px以上では、細い「交樂庭の役割」列の文末に捺した落款として左揃え） */
+  @media (max-width:1179px){
+    .capital-stamp{ margin-inline:auto; }
   }
   @media (max-width:430px){
     .capital-define{ font-size:14.5px; }
@@ -1495,10 +1509,31 @@
     content:"";position:absolute;left:0;right:0;top:0;height:2px;
     background:linear-gradient(90deg,rgba(201,162,74,0),#C9A24A 22%,#E3C67F 50%,#C9A24A 78%,rgba(201,162,74,0));
   }
+  .yokocho-eyebrow-row{
+    margin:0;display:flex;align-items:center;
+    gap:14px;flex-wrap:wrap;
+  }
   .yokocho-eyebrow{
     font-size:10.5px;letter-spacing:.3em;font-weight:600;
     color:#E3C67F;text-transform:uppercase;
   }
+  /* 制作途中であることを、見出しの隣で先に伝える */
+  .yokocho-wip{
+    flex:0 0 auto;
+    font-size:10px;letter-spacing:.18em;font-weight:600;
+    color:#12100E;background:#C9A24A;
+    padding:3px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .yokocho-wip-note{
+    margin:clamp(24px,2.8vw,36px) 0 0;
+    padding:14px 16px;
+    border:1px dashed rgba(201,162,74,.45);
+    border-radius:3px;
+    font-size:12.5px;line-height:1.95;
+    color:rgba(242,237,228,.68);
+    word-break:auto-phrase;line-break:strict;
+  }
+  .yokocho-wip-note b{color:#E3C67F;font-weight:600;}
   .yokocho-head h4{
     font-family:"Shippori Mincho","Noto Serif JP",serif;
     font-size:clamp(20px,2.6vw,29px);font-weight:700;
@@ -1516,6 +1551,15 @@
     word-break:auto-phrase;line-break:strict;
   }
   .yokocho-body p:last-child{margin-bottom:0;}
+  /* 先方サイトのキャッチをそのまま引く一行。
+     .yokocho-body p (0,1,1) を上回るよう、2クラスで指定する */
+  .yokocho-body .yokocho-catch{
+    font-family:"Shippori Mincho","Noto Serif JP",serif;
+    font-size:clamp(15px,1.7vw,18px);
+    font-weight:600;letter-spacing:.08em;
+    color:#E3C67F;
+    margin:0 0 18px;
+  }
   .yokocho-body b{color:#FFFBF3;font-weight:600;}
 
   .yokocho-types{
@@ -1548,7 +1592,7 @@
   }
 
   .yokocho-links{
-    margin-top:clamp(26px,3vw,40px);
+    margin-top:clamp(20px,2.2vw,28px);
     padding-top:clamp(20px,2.4vw,28px);
     border-top:1px solid rgba(201,162,74,.22);
     display:flex;align-items:center;gap:20px;flex-wrap:wrap;
