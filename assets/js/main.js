@@ -212,3 +212,40 @@
     }
   });
 })();
+
+/* YouTube埋め込みのファサード
+   ------------------------------------------------------------------
+   .video-embed[data-yt="動画ID"] の中のリンクを、クリックされるまで
+   ただのサムネイル画像として置いておく。押された時点ではじめて
+   youtube-nocookie の iframe に差し替えるため、ページを開いただけでは
+   YouTubeへの通信が発生しない（表示も軽くなる）。
+   JSが動かない環境では、リンクのままYouTubeが新しいタブで開く。
+   ------------------------------------------------------------------ */
+(function(){
+  var embeds = document.querySelectorAll('.video-embed[data-yt]');
+  if(!embeds.length) return;
+
+  Array.prototype.forEach.call(embeds, function(box){
+    var id = (box.getAttribute('data-yt') || '').trim();
+    var link = box.querySelector('.video-facade');
+    if(!id || !link) return;
+
+    link.addEventListener('click', function(e){
+      // 新しいタブで開きたい場合（Ctrl/⌘クリック等）は邪魔しない
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+
+      var title = link.querySelector('.video-facade-cap');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+                   '?autoplay=1&rel=0&playsinline=1';
+      iframe.title = title ? title.textContent.replace(/を再生$/, '') : 'YouTube動画';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+
+      box.replaceChild(iframe, link);
+      box.classList.add('is-playing');
+    });
+  });
+})();

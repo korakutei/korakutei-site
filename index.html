@@ -42,7 +42,11 @@
   "logo": "https://korakutei.github.io/korakutei-site/assets/img/logo.jpg",
   "email": "korakutei29@gmail.com",
   "description": "世田谷区喜多見を拠点に、地域に眠る「想い・人・場所・文化」をつなぎ、対話から企画・実装・発信まで伴走する地域共創プロデュースカンパニー。",
-  "sameAs": ["https://note.com/korakutei29"]
+  "sameAs": [
+    "https://note.com/korakutei29",
+    "https://www.youtube.com/@korakuteiyuji1863",
+    "https://korakutei.github.io/yokocho-media/"
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -337,7 +341,7 @@
     </div>
 
     <div class="movie-demo" data-movie>
-      <p class="movie-note-top"><span class="movie-note-mark" aria-hidden="true"></span>3つとも、<b>まったく同じ映像</b>です。ちがうのは、流れる言葉だけ。</p>
+      <p class="movie-note-top"><span class="movie-note-mark" aria-hidden="true"></span><span class="movie-note-text">3つとも、<b>まったく同じ映像</b>です。ちがうのは、流れる言葉だけ。</span></p>
 
       <div class="movie-panels" role="group" aria-label="言語別のブランドムービー">
 
@@ -500,10 +504,12 @@
       </div>
       <div class="kendama-feature-grid">
         <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/F6_jayFb5O4" title="けん玉体験の様子" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!-- TODO(要差し替え): この動画IDは交樂庭と無関係の第三者動画（hirayama 195「2015年 第41回新宿三井ビルのど自慢大会」）です。
+               正しいけん玉体験の動画IDに差し替えるか、このブロックごと削除してください。 -->
+          <iframe src="https://www.youtube.com/embed/F6_jayFb5O4" title="けん玉体験の様子" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="note-embed-wrap">
-          <iframe class="note-embed" style="border:0;width:100%;height:405px;" src="https://note.com/embed/notes/n584614140f46" title="けん玉についてのnote記事"></iframe>
+          <iframe class="note-embed" style="border:0;width:100%;height:405px;" src="https://note.com/embed/notes/n584614140f46" title="けん玉についてのnote記事" loading="lazy"></iframe>
         </div>
       </div>
       <div class="media-links">
@@ -521,14 +527,69 @@
         <p class="kendama-feature-desc">浜倉的商店製作所が運営する商業施設「グランハマー」様にて、施設内の様子が写真だけでは伝わりづらいという課題に対し、マイクロドローン撮影を実施。施設のHPへ掲載する動画として、空間の奥行きや回遊性を立体的に可視化しました。</p>
       </div>
       <div class="kendama-feature-grid">
-        <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/PyT5xzqyfoc" title="グランハマー マイクロドローン撮影" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-embed" data-yt="PyT5xzqyfoc">
+          <a class="video-facade" href="https://www.youtube.com/watch?v=PyT5xzqyfoc" target="_blank" rel="noopener">
+            <picture>
+              <source srcset="assets/img/video-grandhammer.webp" type="image/webp">
+              <img src="assets/img/video-grandhammer.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="グランハマー施設内をマイクロドローンで撮影した映像">
+            </picture>
+            <span class="video-facade-veil" aria-hidden="true"></span>
+            <span class="video-facade-play" aria-hidden="true">
+              <svg viewBox="0 0 68 48"><path class="yt-bg" d="M66.5 7.5a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.4a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.5 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.4a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.5z"></path><path d="M27 34V14l18 10z" fill="#fff"></path></svg>
+            </span>
+            <span class="video-facade-cap">グランハマー施設紹介映像を再生</span>
+          </a>
         </div>
         <div class="photo-embed"><picture><source srcset="assets/img/drone-grandhammer.webp" type="image/webp"><img src="assets/img/drone-grandhammer.jpg" width="800" height="600" loading="lazy" decoding="async" alt="グランハマー 施設外観"></picture></div>
       </div>
       <div class="media-links">
         <a class="ext-link" href="https://grandhammer.jp/" target="_blank" rel="noopener">グランハマー公式サイト ↗</a>
         <a class="ext-link" href="https://drive.google.com/file/d/1DM1__ViYgrWLe9v5nWeMA2FJdhcrZKTA/view?usp=sharing" target="_blank" rel="noopener">撮影実績フォルダを見る（Drive）↗</a>
+      </div>
+    </div>
+
+    <!-- 自社メディア：ヨコチョナビ（黒×白×金＝先方サイトの世界観に合わせた意匠） -->
+    <div class="yokocho-feature">
+      <div class="yokocho-head">
+        <span class="yokocho-eyebrow">自社メディア ｜ YOKOCHO NAVI</span>
+        <h4>路地の奥にある縁を、<br class="br-sp">迷わずくぐれるように。</h4>
+      </div>
+
+      <div class="yokocho-grid">
+        <div class="yokocho-body">
+          <p>横丁は、暖簾をくぐった人だけが出会える、小さな縁と物語の宝庫です。けれど「今日そこで何が起きているか」は、なかなか路地の外まで届きません。</p>
+          <p><b>ヨコチョナビ</b>は、その日のにぎわいと、横丁が積み重ねてきた物語をすくい上げ、はじめての人でも迷わず暖簾をくぐれるようにするための案内所です。特定の運営会社の広報物ではなく、横丁文化そのものへの入口を目指す独立系メディアとして運営しています。</p>
+          <p>道先案内人は、提灯を片手に、頭にスズメの相棒をのせた「ヨコチョ」。7つの質問に答えると、あなたの横丁タイプと、今夜くぐりたい横丁が見つかります。</p>
+        </div>
+
+        <div class="yokocho-types">
+          <span class="yokocho-types-label">6つの横丁タイプ</span>
+          <ul class="yokocho-type-list">
+            <li><span class="g">止</span>止まり木のひとり呑み</li>
+            <li><span class="g">梯</span>はしご酒の冒険家</li>
+            <li><span class="g">昭</span>昭和レトロの探訪者</li>
+            <li><span class="g">交</span>交樂の申し子</li>
+            <li><span class="g">灯</span>ネオン横丁の夜遊び人</li>
+            <li><span class="g">初</span>はじめての暖簾</li>
+          </ul>
+          <p class="yokocho-types-note">全7問 ／ 約1分</p>
+        </div>
+      </div>
+
+      <div class="yokocho-links">
+        <a class="btn btn-gold" href="https://korakutei.github.io/yokocho-media/shindan" target="_blank" rel="noopener">ヨコチョ診断をためす ↗</a>
+        <a class="ext-link ext-link-gold" href="https://korakutei.github.io/yokocho-media/about" target="_blank" rel="noopener">ヨコチョナビとは・運営方針 ↗</a>
+      </div>
+    </div>
+
+    <div class="sec-cta">
+      <p class="sec-cta-text">
+        <b>どの領域に当てはまるか、決まっていなくて大丈夫です。</b>
+        <span>「こんなことができないか」という段階のご相談から、いちばん多くご一緒しています。企画が固まる前の壁打ちも歓迎です。</span>
+      </p>
+      <div class="sec-cta-btns">
+        <a href="#track" class="btn btn-outline">実績を見る</a>
+        <a href="#contact" class="btn btn-primary">相談してみる</a>
       </div>
     </div>
   </div>
@@ -630,6 +691,15 @@
         <div class="project-en"><span class="case-label small">EN｜生まれた縁</span><p>京北の地域資源と来訪者の間に、新しい体験を通じた縁が生まれた。</p></div>
       </div>
 
+    </div>
+    <div class="sec-cta">
+      <p class="sec-cta-text">
+        <b>近いケースがあれば、もう少し詳しくお話しします。</b>
+        <span>予算・体制・期間まで含めて、実際にどう進めたのかをお伝えできます。同じ形でなくても、組み替えてご提案します。</span>
+      </p>
+      <div class="sec-cta-btns">
+        <a href="#contact" class="btn btn-primary">この事例について聞く</a>
+      </div>
     </div>
   </div>
 </section>
@@ -783,6 +853,15 @@
         </div>
       </div>
     </div>
+    <div class="sec-cta">
+      <p class="sec-cta-text">
+        <b>まずは、喜多見を見に来ませんか。</b>
+        <span>慶元寺のベニュー下見、オプション体験のご相談、視察のご希望など。現地をご覧いただくところからで構いません。</span>
+      </p>
+      <div class="sec-cta-btns">
+        <a href="#contact" class="btn btn-primary">下見・視察を相談する</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -869,6 +948,7 @@
           <option value="映像・ドローン・PR">映像・ドローン・PR</option>
           <option value="寺院・空き家・遊休資産活用">寺院・空き家・遊休資産活用</option>
           <option value="喜多見フローラル">喜多見フローラル</option>
+          <option value="ヨコチョナビへの掲載">ヨコチョナビへの掲載</option>
           <option value="喜多見・慶元寺での企画">喜多見・慶元寺での企画</option>
           <option value="企業と地域の共創">企業と地域の共創</option>
           <option value="まだ具体化していない相談">まだ具体化していない相談</option>
