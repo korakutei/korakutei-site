@@ -1495,10 +1495,31 @@
     content:"";position:absolute;left:0;right:0;top:0;height:2px;
     background:linear-gradient(90deg,rgba(201,162,74,0),#C9A24A 22%,#E3C67F 50%,#C9A24A 78%,rgba(201,162,74,0));
   }
+  .yokocho-eyebrow-row{
+    margin:0;display:flex;align-items:center;
+    gap:14px;flex-wrap:wrap;
+  }
   .yokocho-eyebrow{
     font-size:10.5px;letter-spacing:.3em;font-weight:600;
     color:#E3C67F;text-transform:uppercase;
   }
+  /* 制作途中であることを、見出しの隣で先に伝える */
+  .yokocho-wip{
+    flex:0 0 auto;
+    font-size:10px;letter-spacing:.18em;font-weight:600;
+    color:#12100E;background:#C9A24A;
+    padding:3px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .yokocho-wip-note{
+    margin:clamp(24px,2.8vw,36px) 0 0;
+    padding:14px 16px;
+    border:1px dashed rgba(201,162,74,.45);
+    border-radius:3px;
+    font-size:12.5px;line-height:1.95;
+    color:rgba(242,237,228,.68);
+    word-break:auto-phrase;line-break:strict;
+  }
+  .yokocho-wip-note b{color:#E3C67F;font-weight:600;}
   .yokocho-head h4{
     font-family:"Shippori Mincho","Noto Serif JP",serif;
     font-size:clamp(20px,2.6vw,29px);font-weight:700;
@@ -1557,7 +1578,7 @@
   }
 
   .yokocho-links{
-    margin-top:clamp(26px,3vw,40px);
+    margin-top:clamp(20px,2.2vw,28px);
     padding-top:clamp(20px,2.4vw,28px);
     border-top:1px solid rgba(201,162,74,.22);
     display:flex;align-items:center;gap:20px;flex-wrap:wrap;
