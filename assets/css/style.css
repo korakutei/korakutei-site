@@ -409,12 +409,17 @@
 
   /* 「循環が生むもの」＝循環の“結果”であることを示す */
   .capital-value{ position:relative; }
+  /* 「循環が生むもの」への下向きの導線。
+     ::after は span の中身として線の“先頭”に積まれるため、
+     以前は矢尻が線の上に出て Y字のような記号に見えていた。
+     absolute で線の下端に固定する。 */
   .capital-value-cue{
+    position:relative;
     display:block;width:1px;height:26px;margin:0 0 14px 4px;
     background:linear-gradient(180deg,rgba(92,110,138,0),var(--navy-line));
   }
   .capital-value-cue::after{
-    content:"";display:block;margin:-1px 0 0 -3px;
+    content:"";position:absolute;left:-3px;bottom:-2px;
     width:7px;height:7px;border-right:1px solid var(--navy-line);border-bottom:1px solid var(--navy-line);
     transform:rotate(45deg);
   }
