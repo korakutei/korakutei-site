@@ -70,7 +70,8 @@
 <body>
 
 <header>
-  <div class="brandmark"><picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.jpg" width="400" height="400" loading="eager" decoding="async" alt="交樂庭ロゴ"></picture>交樂庭</div>
+  <!-- ロゴはトップへ戻るリンク。同じページ上では main.js が先頭へスクロールさせる -->
+  <a class="brandmark" href="./" aria-label="交樂庭 トップへ戻る"><picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.jpg" width="400" height="400" loading="eager" decoding="async" alt=""></picture>交樂庭</a>
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="メニューを開く">
     <span class="nav-toggle-bar"></span>
     <span class="nav-toggle-bar"></span>

@@ -87,12 +87,17 @@
     display:flex;align-items:center;justify-content:space-between;
     mix-blend-mode:normal;
   }
+  /* ロゴ＝トップへ戻るリンク（タップ領域は44px確保） */
   .brandmark{
     font-family:"Shippori Mincho",serif;
     font-weight:700;font-size:16px;letter-spacing:.08em;
     display:flex;align-items:center;gap:10px;
-    color:var(--ink);
+    min-height:44px;
+    color:var(--ink);text-decoration:none;
+    transition:opacity .2s ease;
   }
+  .brandmark:hover{opacity:.72;}
+  .brandmark:focus-visible{outline:2px solid var(--vermillion);outline-offset:4px;border-radius:4px;}
   .brandmark img{
     width:32px;height:32px;border-radius:50%;object-fit:cover;
     border:1px solid var(--paper-line);
