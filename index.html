@@ -70,7 +70,8 @@
 <body>
 
 <header>
-  <div class="brandmark"><picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.jpg" width="400" height="400" loading="eager" decoding="async" alt="交樂庭ロゴ"></picture>交樂庭</div>
+  <!-- ロゴはトップへ戻るリンク。同じページ上では main.js が先頭へスクロールさせる -->
+  <a class="brandmark" href="./" aria-label="交樂庭 トップへ戻る"><picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.jpg" width="400" height="400" loading="eager" decoding="async" alt=""></picture>交樂庭</a>
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="メニューを開く">
     <span class="nav-toggle-bar"></span>
     <span class="nav-toggle-bar"></span>
@@ -313,9 +314,9 @@
       <div class="yokocho-grid">
         <div class="yokocho-body">
           <p class="yokocho-catch">今夜、知らない横丁へ。</p>
-          <p>横丁は、暖簾をくぐった人だけが出会える、小さな縁と物語の宝庫です。けれど「今日そこで何が起きているか」は、なかなか路地の外まで届きません。</p>
-          <p><b>ヨコチョナビ</b>は、全国の横丁を〈地図から、人から、気分から〉探せる横丁ガイドです。新規開業やイベントの情報を出典付きで日々集約し、横丁が積み重ねてきた物語とあわせて届けています。特定の運営会社の広報物ではなく、横丁文化そのものへの入口を目指す独立系メディアとして、交樂庭が自ら運営しています。</p>
-          <p>道先案内人は、提灯を片手に、頭にスズメの相棒をのせた「ヨコチョ」。7つの質問に答えると、あなたの横丁タイプと、今夜くぐりたい横丁が見つかります。</p>
+          <p>横丁は、暖簾をくぐった人だけが出会える、小さな縁と物語の宝庫。けれど「今日そこで何が起きているか」は、路地の外までなかなか届きません。</p>
+          <p><b>ヨコチョナビ</b>は、横丁の開業やイベントの情報を出典付きで集め、横丁の物語とあわせて編集・発信し、今夜の一軒へ人を動かす横丁ガイド。交樂庭が自ら運営する独立系メディアです。</p>
+          <p>7つの質問で、あなたの横丁タイプと今夜くぐりたい横丁が見つかる「ヨコチョ診断」も公開中です。</p>
         </div>
 
         <div class="yokocho-types">
@@ -334,7 +335,7 @@
 
       <p class="yokocho-wip-note">
         <b>現在は制作途中のものを先行公開しています。</b>
-        掲載横丁の拡充、横丁運営者さまへの掲載許諾、機能の追加を順に進めている段階です。「こういう見え方のほうが嬉しい」といったご意見も歓迎しています。
+        掲載横丁の拡充と、運営者さまへの掲載許諾を順に進めています。ご意見も歓迎です。
       </p>
 
       <div class="yokocho-links">
@@ -348,7 +349,7 @@
       <div class="kendama-feature-head">
         <span class="tag">遊び × 教育 ｜ けん玉プログラム</span>
         <h4>遊びを、学びの時間に編集する。</h4>
-        <p class="kendama-feature-desc">けん玉は、成功も失敗もその場で目に見えて、何度でもやり直せる遊びです。交樂庭は、この特性を活かしたけん玉教室やワークショップを企画・実施しています。技を教えること以上に、うまくいかない時間をどう過ごすか、人の挑戦をどう応援するかという、心の知恵が育つ場づくりを大切にしています。年齢や言葉を越えて輪に入れるため、親子の時間づくりから、地域イベントでの交流、訪日の方へ向けた日本文化体験まで、目的に合わせて組み立てます。</p>
+        <p class="kendama-feature-desc">けん玉は、成功も失敗もその場で見えて、何度でもやり直せる遊び。交樂庭はこの特性を、学びの時間として編集しています。うまくいかない時間をどう過ごすか、人の挑戦をどう応援するか。技より先に、心の知恵が育つ場をつくります。親子の時間から地域イベント、訪日の方の文化体験まで、目的に合わせて組み立てます。</p>
       </div>
       <!-- 動画ID F6_jayFb5O4 は、会社対抗のど自慢大会のステージでの
            けん玉パフォーマンスを収めたもの。イベント全体の記録として
@@ -394,24 +395,29 @@
 </section>
 
 <!-- ==========================================================
-     多言語ブランドムービー（#movie）
-     02 EXPERIENCE & CONTENT の実物。
+     OUR STORY（#movie）
+     交樂庭の世界観を伝えるブランドムービー。
+     映像制作の機能説明はトップでは書かず、
+     「地域を編集するための手段のひとつ」として文章を主・映像を従に置く。
      YouTubeの動画IDは assets/js/movie.js の先頭で設定する。
      IDが1つも設定されていない間は、このセクションごと非表示（hidden）。
      ========================================================== -->
 <section class="sec movie-sec reveal" id="movie" hidden>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">BRAND MOVIE ｜ 多言語コンテンツ</span>
-      <h2>同じ景色を、三つの言語で。</h2>
-      <p class="lead">交樂庭が制作したブランドムービーです。映像は一本。そこに日本語・英語・スペイン語のナレーションを載せ替えることで、届けたい相手の言葉で、同じ景色を語りはじめます。</p>
+  <div class="wrap movie-layout">
+    <div class="movie-intro">
+      <div class="sec-head">
+        <span class="eyebrow">OUR STORY ｜ ブランドムービー</span>
+        <h2>地域の物語を、<br>伝わるカタチへ。</h2>
+      </div>
+      <p class="movie-lead">地域には、まだ知られていない物語があります。交樂庭では、地域の人・文化・場所にある背景を丁寧に拾い、映像や言葉、体験などを通じて、その魅力が伝わるカタチへ編集します。</p>
+      <p class="movie-lead movie-lead-em">映像は、私たちが地域を編集するための<br>手段のひとつです。</p>
+      <div class="movie-cta-btns">
+        <a href="#contact" class="btn btn-primary">地域コンテンツについて相談する</a>
+      </div>
     </div>
 
     <div class="movie-demo" data-movie>
-      <p class="movie-note-top"><span class="movie-note-mark" aria-hidden="true"></span><span class="movie-note-text">3つとも、<b>まったく同じ映像</b>です。ちがうのは、流れる言葉だけ。</span></p>
-
       <div class="movie-panels" role="group" aria-label="言語別のブランドムービー">
-
         <article class="movie-panel is-active" data-lang="ja">
           <div class="movie-screen">
             <div class="movie-mount" id="movieMount-ja"></div>
@@ -429,7 +435,6 @@
           </div>
           <div class="movie-meta">
             <span class="movie-lang">日本語<span class="movie-now" aria-hidden="true">再生中</span></span>
-            <span class="movie-lang-sub">JAPANESE ／ ナレーション</span>
           </div>
         </article>
 
@@ -449,8 +454,7 @@
             </button>
           </div>
           <div class="movie-meta">
-            <span class="movie-lang">英語<span class="movie-now" aria-hidden="true">再生中</span></span>
-            <span class="movie-lang-sub">ENGLISH ／ ナレーション</span>
+            <span class="movie-lang">English<span class="movie-now" aria-hidden="true">再生中</span></span>
           </div>
         </article>
 
@@ -470,56 +474,13 @@
             </button>
           </div>
           <div class="movie-meta">
-            <span class="movie-lang">スペイン語<span class="movie-now" aria-hidden="true">再生中</span></span>
-            <span class="movie-lang-sub">ESPAÑOL ／ ナレーション</span>
+            <span class="movie-lang">Español<span class="movie-now" aria-hidden="true">再生中</span></span>
           </div>
         </article>
-
       </div>
 
-      <p class="movie-swipe" aria-hidden="true">横にスワイプして、3言語を見比べる</p>
-      <p class="movie-hint">パネルを選ぶと、<b>再生位置はそのまま</b>に、同じカットの続きが別の言語で流れます。</p>
+      <p class="movie-note">同じ景色を、日本語・英語・スペイン語の3つの言葉で。</p>
       <p class="movie-fallback" data-movie-fallback hidden>この環境では動画を再生できませんでした。<a href="https://www.youtube.com/@korakuteiyuji1863" target="_blank" rel="noopener">YouTubeで見る ↗</a></p>
-    </div>
-
-    <ul class="movie-spec">
-      <li><span class="k">尺</span><span class="v">45秒</span></li>
-      <li><span class="k">形式</span><span class="v">縦型 9:16 ／ 1080×1920</span></li>
-      <li><span class="k">言語</span><span class="v">日本語・英語・スペイン語</span></li>
-      <li><span class="k">制作</span><span class="v">企画・撮影・編集・多言語ナレーション</span></li>
-    </ul>
-
-    <div class="movie-value">
-      <div class="movie-value-head">
-        <span class="eyebrow">WHY IT MATTERS ｜ この一本が示すもの</span>
-        <h3>撮るのは、一度きり。<br class="br-sp">届く先は、言語の数だけ。</h3>
-      </div>
-      <ul class="movie-value-list">
-        <li>
-          <span class="movie-value-num">01</span>
-          <h4>一つの素材から、多言語へ</h4>
-          <p>ロケも編集も、やり直しません。翻訳・ナレーション・整音を載せ替えるだけで、届けたい相手の数だけ言語が増えていく。インバウンド発信にかかる時間と費用が、根本から変わります。</p>
-        </li>
-        <li>
-          <span class="movie-value-num">02</span>
-          <h4>縦型のまま、手のひらにも、まちの画面にも</h4>
-          <p>9:16で仕上げているので、Instagram・TikTok・YouTube ショートへ、そして施設や店舗のデジタルサイネージへ。書き出し直しをせずに、そのまま展開できます。</p>
-        </li>
-        <li>
-          <span class="movie-value-num">03</span>
-          <h4>通い慣れた人間が、カメラを置く</h4>
-          <p>寺の参道に朝の光が差す時間も、商店街が暮れていく速さも、知っているから待てる。だから説明ではなく、その土地の体温が残る映像になります。</p>
-        </li>
-      </ul>
-      <p class="movie-value-close">言葉が変わっても、<br class="br-sp">縁は、同じ景色から始まる。</p>
-    </div>
-
-    <div class="movie-cta">
-      <p class="movie-cta-text">地域や施設のブランドムービー制作と、その多言語展開もお手伝いしています。</p>
-      <div class="movie-cta-btns">
-        <a href="#service" class="btn btn-outline">事業領域を見る</a>
-        <a href="#contact" class="btn btn-primary">映像制作を相談する</a>
-      </div>
     </div>
   </div>
 </section>
@@ -705,7 +666,7 @@
     <div class="sec-head">
       <span class="eyebrow">PROJECT ｜ 実績</span>
       <h2>見つけて、編集して、かたちにしたもの。</h2>
-      <p class="lead">地域にあったものを、どう読み替え、何に変えたのか。数字と一緒にご覧ください。</p>
+      <p class="lead">地域にあったものを見つけ、どう編集し、何のカタチにしたのか。小さく試した結果とあわせてご覧ください。</p>
     </div>
     <div class="rule"></div>
 
@@ -725,7 +686,7 @@
           <dl class="pj-flow">
             <div><dt>見つけた</dt><dd>毎年続くのに、参加してもすぐ帰ってしまう祭り。</dd></div>
             <div><dt>編集した</dt><dd>祭り × 地域経済。境内を「過ごす時間」として組み直す。</dd></div>
-            <div><dt>つくった</dt><dd>キッチンカー・縁日・交流企画を組み合わせた滞在型の祭り。</dd></div>
+            <div><dt>カタチにした</dt><dd>キッチンカー・縁日・交流企画を組み合わせた滞在型の祭り。</dd></div>
             <div><dt>変わった</dt><dd>2025年・2026年も継続開催。地域の出店者・参画者が増加。</dd></div>
           </dl>
           <ul class="pj-stats">
@@ -748,7 +709,7 @@
           <dl class="pj-flow">
             <div><dt>見つけた</dt><dd>法要以外の時間は使われていない、風の抜ける本堂。</dd></div>
             <div><dt>編集した</dt><dd>寺院 × 交流。静けさそのものを体験価値として扱う。</dd></div>
-            <div><dt>つくった</dt><dd>戸を開け放ち、木々の匂いの中で行う本堂ヨガクラス。</dd></div>
+            <div><dt>カタチにした</dt><dd>戸を開け放ち、木々の匂いの中で行う本堂ヨガクラス。</dd></div>
             <div><dt>変わった</dt><dd>2024年度は年3回開催。参加者・講師・寺の関係が続いている。</dd></div>
           </dl>
         </div>
@@ -766,7 +727,7 @@
           <dl class="pj-flow">
             <div><dt>見つけた</dt><dd>寺に残る念仏・木魚、地域に伝わる太鼓や殺陣。</dd></div>
             <div><dt>編集した</dt><dd>文化 × インバウンド。見せる観光から、やってみる時間へ。</dd></div>
-            <div><dt>つくった</dt><dd>本殿での念仏・木魚体験に太鼓・殺陣を組み合わせた半日プログラム。</dd></div>
+            <div><dt>カタチにした</dt><dd>本殿での念仏・木魚体験に太鼓・殺陣を組み合わせた半日プログラム。</dd></div>
             <div><dt>変わった</dt><dd>海外企業と寺・地域の担い手に、継続的な行き来が生まれた。</dd></div>
           </dl>
         </div>
@@ -796,7 +757,7 @@
           <dl class="pj-flow">
             <div><dt>見つけた</dt><dd>実際に歩くと面白いのに、写真だと魅力が伝わらない施設。</dd></div>
             <div><dt>編集した</dt><dd>場所 × 映像。間取り紹介ではなく「歩く体験」として撮る。</dd></div>
-            <div><dt>つくった</dt><dd>マイクロドローンで空間の奥行きと回遊性を一筆書きで撮影した映像。</dd></div>
+            <div><dt>カタチにした</dt><dd>マイクロドローンで空間の奥行きと回遊性を一筆書きで撮影した映像。</dd></div>
             <div><dt>変わった</dt><dd>施設公式サイトに掲載。来店前に空気感が伝わる導線になった。</dd></div>
           </dl>
           <div class="media-links">
@@ -818,7 +779,7 @@
           <dl class="pj-flow">
             <div><dt>見つけた</dt><dd>通り過ぎるだけで終わっていた、茶屋街の建物と生業。</dd></div>
             <div><dt>編集した</dt><dd>文化 × 商い。土地の物語を体験プログラムの単位に組み替える。</dd></div>
-            <div><dt>つくった</dt><dd>地域資源を使った体験プログラムと、その販売・還元の仕組み。</dd></div>
+            <div><dt>カタチにした</dt><dd>地域資源を使った体験プログラムと、その販売・還元の仕組み。</dd></div>
             <div><dt>変わった</dt><dd>地域の担い手と、体験づくりを続ける関係が生まれた。</dd></div>
           </dl>
         </div>
@@ -833,7 +794,7 @@
           <dl class="pj-flow">
             <div><dt>見つけた</dt><dd>個々には魅力的なのに、線でつながっていない京北の資源。</dd></div>
             <div><dt>編集した</dt><dd>資源 × 回遊。点を順路に読み替える。</dd></div>
-            <div><dt>つくった</dt><dd>京北をめぐるオリジナル体験プログラムと、地域に還る仕組み。</dd></div>
+            <div><dt>カタチにした</dt><dd>京北をめぐるオリジナル体験プログラムと、地域に還る仕組み。</dd></div>
             <div><dt>変わった</dt><dd>来訪者が滞在中に使う場所と時間が増えた。</dd></div>
           </dl>
         </div>
@@ -942,9 +903,11 @@
       </div>
     </div>
 
+    <!-- 同じ仕組みを横に広げるのではなく、地域ごとに見つけ直して編集し直す姿勢を示す -->
     <div class="lab-closing">
       <span class="lab-closing-arrow">︾</span>
-      <p>ここで試した小さな商いを、<br><b>他の地域へも、持っていきます。</b></p>
+      <p class="lab-closing-title">ここで得た知恵を、<br>それぞれの地域に合わせて、<br class="br-sp">もう一度編集する。</p>
+      <p class="lab-closing-text">喜多見で生まれたアイデアや経験を、そのまま別の地域へ持ち込むことはしません。<br>地域が変われば、人も文化も場所も違う。<br>だからこそ、その土地にあるものを改めて見つけ、<br class="br-sp">その地域らしいカタチへ編集していきます。</p>
     </div>
 
     <div class="sec-head lab-sub-head">
@@ -1020,12 +983,29 @@
   </div>
 </section>
 
-<section class="vision reveal">
+<!-- ==========================================================
+     KITAMI VISION（喜多見で目指していること）
+     LABでの小さな実験の先にある将来像。
+     いきなり構想名を出さず、「喜多見で何を目指しているか」から入り、
+     その呼び名として Learning City ～遊育～ を示す。
+     ========================================================== -->
+<section class="vision reveal" id="vision">
   <div class="vision-bg"></div>
   <div class="wrap">
-    <span class="eyebrow">ありたい姿</span>
-    <h2>喜多見エリア一帯を<br><em>「Learning City ～遊育～」</em>へ</h2>
-    <p>地域を回遊しながら学びを得られる機会づくりを目指しています。誰かの所有物ではない、関わるすべての人が「ここは自分のまちだ」と感じられる未来へ。</p>
+    <span class="eyebrow">KITAMI VISION</span>
+    <h2>喜多見で目指していること。</h2>
+    <p class="vision-lead">交樂庭が喜多見でつくりたいのは、<br>特別な施設や巨大なプロジェクトではありません。<br>祭り、寺、銭湯、商店、住宅、遊び、地域の人。<br>日常の中にある場所や文化をつなぎ直し、<br>子どもも大人も、遊びながら学び、<br class="br-sp">人と出会えるまちを目指しています。</p>
+
+    <p class="vision-name">
+      <span class="vision-name-pre">その未来像を、</span>
+      <em>Learning City ～遊育～</em>
+      <span class="vision-name-post">と呼んでいます。</span>
+    </p>
+
+    <div class="vision-define">
+      <h3>遊びから、学びが生まれるまち。</h3>
+      <p>子どもが地域で遊び、大人が自分の得意を持ち寄り、<br class="br-pc">地域の文化や仕事が学びになる。<br>学校だけではない、まち全体が学びの場所になる。<br>そんな地域のあり方を、喜多見から少しずつ試しています。</p>
+    </div>
     <div class="vision-caption">喜多見・旧商店街の風景</div>
   </div>
 </section>

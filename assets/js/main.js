@@ -80,6 +80,11 @@
   primaryNav.addEventListener('click', function(e){
     if(e.target === primaryNav || e.target.tagName === 'A'){ closeNav(false); }
   });
+  // メニュー展開中にロゴ（トップへ戻る）を押した場合も、メニューを閉じる
+  var brand = document.querySelector('.brandmark');
+  if(brand){
+    brand.addEventListener('click', function(){ if(isOpen()) closeNav(false); });
+  }
   document.addEventListener('keydown', function(e){
     if(!isOpen()) return;
     if(e.key === 'Escape'){ closeNav(true); return; }
@@ -93,6 +98,27 @@
   // メニュー展開中に画面幅がデスクトップに戻った場合、ロックを解除する
   window.addEventListener('resize', function(){
     if(isOpen() && window.innerWidth > 760) closeNav(false);
+  });
+})();
+
+/* ロゴ＝トップへ戻る
+   ------------------------------------------------------------------
+   href="./" のままだとページ全体を読み込み直すため、同じページ上では
+   再読み込みせず先頭へスクロールし、URLに残った #section も消す。
+   JSが動かない環境では、リンクのままトップページが開く。
+   ------------------------------------------------------------------ */
+(function(){
+  var brand = document.querySelector('.brandmark');
+  if(!brand) return;
+  brand.addEventListener('click', function(e){
+    // 新しいタブで開きたい場合（Ctrl/⌘クリック等）は邪魔しない
+    if(e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if(location.hash && window.history && history.replaceState){
+      history.replaceState(null, '', location.pathname + location.search);
+    }
   });
 })();
 
