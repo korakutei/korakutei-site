@@ -1,6 +1,6 @@
 (function(){
   var header = document.querySelector('header');
-  var darkSections = document.querySelectorAll('.vmv, .vision, .movie-sec');
+  var darkSections = document.querySelectorAll('.philo, .vision, .movie-sec');
 
   function updateHeader(){
     var probeY = 44;
@@ -16,8 +16,14 @@
   window.addEventListener('resize', updateHeader);
   updateHeader();
 
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav a'));
-  var navSections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  // 外部リンク（JOURNAL など）は監視対象外。
+  // '#' で始まらない href を querySelector に渡すと例外になるため、先に除外する
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav a')).filter(function(a){
+    return (a.getAttribute('href') || '').charAt(0) === '#';
+  });
+  var navSections = navLinks.map(function(a){
+    try{ return document.querySelector(a.getAttribute('href')); }catch(e){ return null; }
+  });
   if('IntersectionObserver' in window){
     var navObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
