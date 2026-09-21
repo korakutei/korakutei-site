@@ -71,14 +71,14 @@ assets/img/             # 写真（jpg + webp の2本立て。<picture>で出し
 ```
 
 - 画像は外部ファイル参照（過去のBase64埋め込みは廃止済み）
-- `out/` `動画/` `*.zip` などの素材は .gitignore 済み
+- `out/` `動画/` `写真/` `*.zip` などの素材は .gitignore 済み
 
 ## 4. ページ構成（2026/09/21 再構成）
 
 | 順 | id | 見出し | 内容 |
 |---|---|---|---|
 | 01 | `.hero` | 地域にあるものを、新しい価値へ。 | 事業コピー＋ブランドコピー＋CTA2つ |
-| 02 | `about` | 地域には、まだ名前のついていない価値がある。 | WHAT WE FIND。資源タイル14枚（写真8＋言葉6）＋原点の折りたたみ |
+| 02 | `about` | 地域には、まだ名前のついていない価値がある。 | WHAT WE FIND。資源タイル14枚（すべて写真＋一語）＋原点の折りたたみ |
 | 03 | `service` | 見つけたものを、商いのかたちに。 | WHAT WE CREATE。4領域カード＋ヨコチョナビ＋けん玉 |
 | – | `movie` | 地域の物語を、伝わるカタチへ。 | OUR STORY。PCは文章＝主／映像＝従の2カラム。動画ID未設定なら自動で非表示 |
 | 04 | `method` | 地域にあるものから、商いが生まれるまで。 | KORAKUTEI METHOD 5ステップ。中心に「縁的資本」 |
@@ -153,6 +153,20 @@ assets/img/             # 写真（jpg + webp の2本立て。<picture>で出し
 | `venue-sanmon` `venue-hondou1/2` | 慶元寺。FINDタイル「場所」／ベニュー紹介 |
 | `rep-urano` | 代表紹介 |
 | `video-*` `drone-*` `movie-poster` | 動画サムネイル |
+| `find-history` `find-temple` `find-akiya` `find-sento` `find-yokocho` `find-community` | FINDタイル「歴史／寺院／空き家／銭湯／横丁／コミュニティ」。**サンプル画像**（2026/09/21差し込み） |
+
+### サンプル画像の扱い
+
+`find-*` の6枚は浦野様が用意したサンプル画像で、喜多見の実写ではない。
+**実際の場所・活動の写真が撮れたら優先して差し替える**（index.html にも同旨のコメントあり）。
+
+差し替え手順：元画像を `写真/`（.gitignore 済み）に置き、ImageMagick で 400px 四方の JPG＋WebP に変換して同名で上書きする。
+
+```bash
+magick 写真/元画像.png -resize 400x400^ -gravity center -extent 400x400 -strip -colorspace sRGB -interlace Plane -quality 74 assets/img/find-sento.jpg
+magick 写真/元画像.png -resize 400x400^ -gravity center -extent 400x400 -strip -colorspace sRGB -quality 74 -define webp:method=6 assets/img/find-sento.webp
+```
+（正方形でない写真も、中央で400px四方に切り抜かれる）
 
 **未使用**：`biz-nigiwai`（= `track-yoga` と同じ本堂ヨガの別トリミング）、`biz-content`（AI生成の合成イメージ。実写優先方針のため不使用）。削除はしていないので、差し替え候補として使える。
 

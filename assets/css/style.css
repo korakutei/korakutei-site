@@ -248,7 +248,7 @@
   /* ==========================================================
      WHAT WE FIND（#about）
      地域にあるものを、説明しすぎずに並べる。
-     写真タイルと言葉タイルを同じ枠に混ぜ、
+     写真に一語だけを添えたタイルを並べ、
      「まだ名前のついていない価値」の一覧に見せる。
      ========================================================== */
   .find-grid{
@@ -267,7 +267,7 @@
   .find-tile picture{position:absolute;inset:0;}
   .find-tile img{width:100%;height:100%;object-fit:cover;}
   /* 写真タイルは、文字が読めるぶんだけ静かに沈める */
-  .find-tile:not(.is-word)::after{
+  .find-tile::after{
     content:"";position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(27,42,65,.06) 30%,rgba(27,42,65,.62) 100%);
   }
@@ -278,22 +278,6 @@
     color:#fbf8f1;text-align:center;line-height:1.5;
     padding:0 8px 10px;
     text-shadow:0 2px 14px rgba(27,42,65,.7);
-  }
-  /* 写真を持たない資源は、和紙の上の言葉として置く */
-  .find-tile.is-word{
-    background-color:var(--bg-card);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cg fill='none' stroke='%231B2A41' stroke-opacity='.06' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='16'/%3E%3Ccircle cx='32' cy='0' r='16'/%3E%3Ccircle cx='0' cy='32' r='16'/%3E%3Ccircle cx='32' cy='32' r='16'/%3E%3Ccircle cx='16' cy='16' r='16'/%3E%3C/g%3E%3C/svg%3E");
-    background-size:32px 32px;
-  }
-  /* 言葉タイルは中央に置く。「コミュニティ」のような長い語も収まるよう字間を詰める */
-  .find-tile.is-word{align-items:center;}
-  .find-tile.is-word .w{
-    color:var(--ink);text-shadow:none;letter-spacing:.04em;padding:0 8px;
-    font-size:clamp(12px,1.3vw,15px);
-  }
-  .find-tile.is-word::before{
-    content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:14px;
-    width:22px;height:1px;background:var(--vermillion);opacity:.4;
   }
   .find-note{
     margin:clamp(30px,3.6vw,48px) 0 clamp(40px,5vw,64px);
