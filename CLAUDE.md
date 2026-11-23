@@ -67,6 +67,10 @@ assets/css/style.css    # 全スタイル（1ファイル）
 assets/js/main.js       # ヘッダー・ナビ・reveal・フォーム・YouTubeファサード
 assets/js/movie.js      # 多言語ブランドムービー（YouTube動画IDはファイル冒頭で設定）
 assets/js/marie.js      # 看板犬マリーの道案内（右下についてくる・おさんぽマップ）→ 7章
+assets/js/motion.js     # スクロール演出（GSAP ScrollTrigger）→ 5章「スクロール演出」
+assets/js/src/hero-en.js# ヒーローの「縁の輪」（three.js）の元ソース
+assets/js/hero-en.min.js# ↑を esbuild で束ねたもの（直接編集しない）
+assets/vendor/          # gsap.min.js / ScrollTrigger.min.js（GSAP 3.15.1）＋ライセンス
 assets/img/             # 写真（jpg + webp の2本立て。<picture>で出し分け）
                         # マリーだけは透過が必要なので png + webp（marie-*）
 .claude/launch.json     # ローカルプレビュー用（npx http-server, :4173）
@@ -134,6 +138,24 @@ assets/img/             # 写真（jpg + webp の2本立て。<picture>で出し
 - 写真：PROJECTカードの写真だけ、文字より少し遅れて出現
 - 線でつながる演出：METHOD の円環矢印／PHILOSOPHY の「人・場所・文化…→縁的資本」
 - `prefers-reduced-motion` で全て無効化
+
+### スクロール演出（2026/11 追加・`assets/js/motion.js`）
+出現（フェードイン）は従来どおり main.js の `.reveal` が担当。motion.js は「スクロールに連動して動くもの」だけを足す。二重にしないこと。
+
+| 場所 | 演出 |
+|---|---|
+| ヒーロー背景（`.hero-en`） | three.js の「縁の輪」。小さな輪が漂い、近いものが糸（縁）で結ばれる。ポインターの近くは朱に灯る。スクロールすると、ばらばらの輪がひとつの大きな円（和・輪・縁）に集まる |
+| ヒーローの文字 | スクロールで少し遅れて上へ抜け、円に場所をゆずる |
+| ヘッダー下端 | 読み進んだ分だけ朱の細線が伸びる（`.scroll-progress`） |
+| PROJECT の写真・VISION の背景 | ゆっくり視差 |
+
+- three.js は表示を遅らせないよう、ページ表示後に読み込む（約530KB・gzip約136KB）。WebGLが使えない環境・読み込み失敗時は従来の七宝の背景のまま
+- 画面外・タブ非表示のときは描画を止める。中央は文字を読みやすくするため、マスクで薄くしている
+- `hero-en.js` を直したら作り直す：
+  ```bash
+  npm i --no-save three esbuild
+  npx esbuild assets/js/src/hero-en.js --bundle --minify --format=esm --outfile=assets/js/hero-en.min.js
+  ```
 
 ## 6. 写真の方針
 
