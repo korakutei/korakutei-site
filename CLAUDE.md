@@ -8,7 +8,7 @@
 - **会社名**：合同会社交樂庭（Ko Raku Tei）
 - **代表社員**：浦野雄次（うらのゆうじ）
 - **連絡先**：korakutei29@gmail.com
-- **公開URL**：https://korakutei.github.io/korakutei-site/
+- **公開URL**：https://korakutei.com/（独自ドメイン。リポジトリ直下の `CNAME` で設定。旧 https://korakutei.github.io/korakutei-site/ は自動で転送される）
 - **サイトの目的**：自治体・地域事業者・企業からの「相談」「仕事依頼」につながるブランドサイト
 - **Vision**：IKIGAIに出逢える機会を提供する
 - **Mission**：ワクワクする交流機会を創造する
