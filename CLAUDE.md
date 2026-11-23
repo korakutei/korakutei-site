@@ -93,6 +93,7 @@ assets/img/             # 写真（jpg + webp の2本立て。<picture>で出し
 | 10 | `contact` | まだ企画になっていなくても、大丈夫です。 | 相談入口としてのフォーム。PCではフォームの横でマリーが待つ |
 
 グローバルナビ：**ABOUT / SERVICE / PROJECT / LAB / JOURNAL / CONTACT**
+（Instagram @korakutei は 会社概要・フッター・構造化データ sameAs に掲載）
 （JOURNAL は note.com への外部リンク、CONTACT のみ朱色のボタン）
 
 ## 5. デザインシステム
